@@ -579,7 +579,7 @@ router.get("/quiz/job", function(req,res){ //네글자 이어말하기 게임(�
 })
 
 var numSports = 0;
-router.get("/quiz/sports", function(req,res){ //네글자 이어말하기 게임(본 게임)
+router.get("/quiz/sports", function(req,res){ // 행동 게임(스포츠)
     numSports += 1;
     if(numSports<11){
         var sql = "select * from sports";
@@ -726,7 +726,7 @@ router.get("/quiz/object", function(req,res){ //네글자 이어말하기 게임
 })
 
 var numAction = 0;
-router.get("/quiz/actionGame", function(req,res){ //네글자 이어말하기 게임(본 게임)
+router.get("/quiz/actionGame", function(req,res){ // 
     numAction += 1;
     if(numAction<11){
         var sql = "select * from actionGame";

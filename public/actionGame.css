@@ -43,6 +43,7 @@
     align-items: center; /* 수직 가운데 정렬 */
     text-align: center; /* 텍스트 가운데 정렬 */
     transition: .5s;
+    z-index: 1;
 }
 
 .btn2 {
@@ -63,6 +64,7 @@
     align-items: center; /* 수직 가운데 정렬 */
     text-align: center; /* 텍스트 가운데 정렬 */
     transition: .5s;
+    z-index: 1;
 }
 
 .btn3 {
@@ -82,6 +84,7 @@
     align-items: center; /* 수직 가운데 정렬 */
     text-align: center; /* 텍스트 가운데 정렬 */
     transition: .5s;
+    z-index: 1;
 }
 .btn4 {
     width: 22rem;
@@ -155,12 +158,13 @@ a:link, a:visited {
     text-decoration: none;  /* 밑줄없애기 */
     color: black;
 }
+
 .btn1:hover {
     background-color: hsl(27, 100%, 50%);
 }
 .btn2:hover {
     background-color: hsl(27, 100%, 50%);
-}
+ }
 .btn3:hover {
     background-color: hsl(27, 100%, 50%);
 }
@@ -172,8 +176,7 @@ a:link, a:visited {
 }
 .btn6:hover {
     background-color: hsl(27, 100%, 50%);
-}
-
+} 
 a {
     position: relative;
     z-index: 1;

@@ -1,3 +1,4 @@
+
 * {
     font-family: 'Jua', sans-serif;
 }
@@ -22,34 +23,39 @@ body {
     top:50px;
     left: 50px;
 }
+
+
 .circle {
-
+    width: 200px;
+    height: 200px;
+    border-radius: 80%;
+    font-size: 80px;
+    line-height: 200px;
+    border: 20px solid hsl(27, 100%, 50%);
+    margin: auto;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin:auto;
-    height: 350px;
-    width: 350px;
+   
+    justify-content: center; /* 수평 정렬 */
+    align-items: center; /* 수직 정렬 */
+}
+.answer {
+    font-size: 100px;
     text-align: center;
-    line-height: 350px;
-    font-size: 70px;
-
-    border: 20px;
-    border-radius: 50%;
-    border-color: #F6B157;
-    border-style: solid;
-    
+    margin: 2%;
+    color: hsl(27, 100%, 50%);
 }
 
 p {
-    height: auto;
+    font-size: 50px;
     text-align: center;
-    font-size: 40px;
+    margin: 2%;
 }
 
 .right {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
     float: right;
-    width: 100px;
-    height: 100px;
-    
+    width: 8rem;
+    height: 8rem;
 }

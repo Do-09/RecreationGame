@@ -86,8 +86,10 @@ p {
 }
 
 .right {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
     float: right;
-    width: 100px;
-    height: 100px;
-    
+    width: 8rem;
+    height: 8rem;
 }
