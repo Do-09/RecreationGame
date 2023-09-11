@@ -21,6 +21,7 @@
     top: 320px;
     right: 0;
 }
+
 .btn {
     display: flex;
     justify-content: center;
@@ -35,6 +36,7 @@
     background-color: #F6B157;
     position:absolute;
     top: 50%;
+    right: 20%;
     margin-left: 32rem;
     border-radius: 200px;
     font-size: 6rem;
@@ -49,6 +51,7 @@
     width: 28rem;
     height: 15rem;
     top: 50%;
+    left: 20%; /* 오른쪽을 기준으로 가운데 정렬 */
     background-color: #F6B157;
     position: absolute;
     margin-right: 32rem;
@@ -67,6 +70,7 @@
 .quizbtn:hover {
     background-color: hsl(27, 100%, 50%);
 }
+
 .quizletter {
     position: relative;
     top:-3rem;
@@ -78,10 +82,12 @@
     right: -9rem;
 }
 
+
 a:link, a:visited {
     text-decoration: none;  /* 밑줄없애기 */
     color: black;
 }
+
 
 .alarm {
     width: 150px;
@@ -90,11 +96,29 @@ a:link, a:visited {
     top: 30px;
 }
 
-#image {
-    width: 10rem;
+#explain_Image {
+    width: 7rem;
     position: absolute;
-    bottom: 2px;
-    right: -1px;
+    bottom: 8px;
+    right: 15px;
+}
+
+.team {
+    width: 7rem;
+    position: absolute;
+    bottom: 100px;
+    left: 15px;
+
+    border-radius: 30px;
+    background-color: #40BBCA;
+    text-align: center;
+}
+
+#team_Image {
+    width: 7rem;
+    position: absolute;
+    bottom: 4px;
+    left: 15px;
 }
 
 
@@ -115,22 +139,32 @@ a:link, a:visited {
   }
   
   .modal-content {
-    background-color: #fefefe;
+    background-color: #F3E3B9;
     width: 80%; /* 모달의 너비를 80%로 설정 */
-    height: 100%; /* 모달의 높이를 80%로 설정 */
+    height: 80%; /* 모달의 높이를 80%로 설정 */
     margin: 15% auto; /* 모달 팝업을 중앙에 위치시킴 */
     padding: 20px;
-    margin-top: 2rem;
+    margin-top: 5rem;
     border: 1px solid #888;
-    width: 80%; /* 모달 팝업 너비를 80%로 설정 */
     font-size: 2rem;
     overflow-y: scroll; 
+  }
+  #mainText {
+    font-size:3rem;
+    color: hsl(27, 100%, 50%);
+  }
+  #midText {
+    font-size:2.2rem;
+    background-color:#F6B157;
+  }
+  #explain {
+    color : #3F1600;
   }
   
   .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 35px;
     font-weight: bold;
   }
   

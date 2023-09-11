@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recreation Game</title>
-    <link rel="stylesheet" href="/public/mainTimer.css" />
+    <link rel="stylesheet" href="/public/css/mainTimer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,14 +32,14 @@
       <div class="title">타이머</div>
 
       <div class="home">
-        <a href="/"><img class='home' src="/public/home.png" alt="홈으로"></a>
+        <a href="/"><img class='home' src="/public/img/home.png" alt="홈으로"></a>
       </div>
 
       <br><br><br> 
       <% var time = data %>
       <div class="container">
         <div class="alarm_setting">
-          <div style="text-align: center;"><img class="alarm" src="/public/alarm-clock.png" /><div class="number" id = countdown>
+          <div style="text-align: center;"><img class="alarm" src="/public/img/alarm-clock.png" /><div class="number" id = countdown>
           <%= time.time / 100 %>
           </div></div>
           <br><br> <br>

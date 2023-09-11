@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recreation Game</title>
     <script src="/public/main.js" defer></script>
-    <link rel="stylesheet" href="/public/main.css" />
+    <link rel="stylesheet" href="/public/css/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,7 +19,7 @@
       <h1 class="title">레크레이션 게임</h1>
 
       <div class="clock">
-        <a href='/mainTimerSetting'><img class="alarm" src="/public/alarm.png" alt="알람" /></a>
+        <a href='/mainTimerSetting'><img class="alarm" src="/public/img/alarm.png" alt="알람" /></a>
       </div>
     </nav>
 
@@ -28,40 +28,50 @@
     </section>
 
     <div class="btn">
-      <div class="quizbtn"><a href="/quiz">퀴즈</a></div>
-      <div class="actionbtn"><a href="/action">행동</a></div>
+      <div><a href="/quiz" class="quizbtn">퀴즈</a></div>
+      <div><a href="/action" class="actionbtn">행동</a></div>
+    </div>
+
+    <div class="teamPage">
+      <div class="team">TEAM</div>
+      <a href="/team"><img src="/public/img/team.png" id="team_Image"></a>
     </div>
 
     <div class="question">
-      <img src="/public/question.png" id="image" />
+      <img src="/public/img/question.png" id="explain_Image" />
       <div id="modal" class="modal">
         <div class="modal-content">
           <span class="close">&times;</span>
+
           <p id="modal-text"></p>
           <!-- 모달 팝업에 표시할 텍스트 요소 -->
-          이 사이트는 레크레이션을 준비하는 담당자들을 위해 준비한 게임 모음
-          사이트입니다. <br /><br />메인 화면의 우측상단에 있는 타이머로 시간을
-          설정할 수 있으며 릴레이 게임을 할 때 적합합니다. <br /><br />게임
-          설명: 카테고리별 원하는 게임 선택 -> 타이머 설정 -> 연습문제 ->
-          본게임(10문제) <br />* 타이머 설정 후 START버튼을 누르면 바로 시간이
-          감소됩니다.<br /><br />
-          게임의 방식은 크게 두가지로 퀴즈와 행동이 있습니다.<br />
-          먼저 퀴즈는 네글자 이어말하기, 상식, OX, 넌센스, 국기로 총 5개의 세부
-          카테고리가 있습니다. <br /><br />네글자 이어말하기는 네글자의 단어 중
-          앞에 2개의 단어를 보고 나머지 글자를 맞히는 게임입니다.<br />상식은
-          다양한 주제의 상식 문제를 단답형으로 맞히는 게임입니다.<br />OX는
-          주어진 문제에 대해 OX로 답하는 게임입니다.<br />넌센스는 넌센스 퀴즈를
-          단답형으로 맞히는 게임입니다. <br />국기는 각 나라의 국기를 보고
-          나라이름을 맞히는 게임입니다. <br /><br />행동 <br />일심동체는 키워드
-          보고 똑같은 포즈를 취하는 게임입니다.<br />
-          몸으로 말해요는 한 팀원만 키워드를 보고 몸으로 설명하면 남은 팀원이
-          맞히는 게임입니다. <br />줄줄이 말하기는 주제를 보고 모든 팀원이 서로
-          다른 연관 단어를 말하는 게임입니다. <br />이어 그리기는 특정 주제를 한
-          사람씩 이어 그린 뒤 마지막 주자가 정답을 맞하는 게임입니다.<br /><br />※
-          이어그리기 게임 시 주의사항<br />
-          팀 당 1개의 스케치북 또는 패드 필요합니다.<br />
-          키워드를 보고 한 사람씩 이어 그립니다. <br />
-          마지막 팀원은 그림을 보고 답 맞히면 됩니다.
+          <span id="mainText">게임 설명</span><hr size="3" color="grey">
+          먼저 퀴즈와 행동 중 선택합니다.<br/>
+          퀴즈는 네 글자 이어말하기, 상식, ox, 넌센스, 국기 맞추기로 구성되어있습니다.<br/>
+          행동은 일심동체, 몸으로 말해요, 줄줄이 말하기, 이어 그리기로 구성되어있습니다.<br/><br/><br />
+
+          <span id="mainText">퀴즈 게임</span><hr size="3" color="grey">
+          <span id="midText">네 글자 이어말하기</span> 네 글자의 단어 중 앞 두 글자를 보고 나머지 글자를 맞히는 게임입니다.<br />
+          <span id="midText">넌센스</span> 넌센스 퀴즈를 단답형으로 맞히는 게임입니다.<br />
+          <span id="midText">상식</span> 다양한 주제의 상식 문제를 단답형으로 맞히는 게임입니다.<br />
+          <span id="midText">OX</span> 주어진 문제에 대해 OX로 답하는 게임입니다.<br />
+          <span id="midText">국기</span> 각 나라의 국기를 보고 나라 이름을 맞히는 게임입니다.<br /><br /><br />
+
+          <span id="mainText">행동 게임</span><hr size="3" color="grey"> 
+          <span id="midText">몸으로 말해요</span> 한명의 팀원만 키워드를 보고 몸으로 설명하여 남은 팀원들이 키워드를 맞히는 게임입니다.<br />
+          <span id="midText">줄줄이 말하기</span> 주제를 보고 모든 팀원이 서로 다른 연관 단어를 말하는 게임입니다.<br />
+          <span id="midText">이어 그리기</span> 특정 주제를 한 사람씩 이어 그린 뒤 마지막 주자가 정답을 맞히는 게임입니다.<br />
+          <span id="midText">일심동체</span> 키워드를 보고 팀원 모두 똑같은 포즈를 취해야 하는 게임입니다.<br /><br /><br/>
+          
+          <span id="explain">※이어그리기 게임 준비</span><br />
+          팀 당 1개의 스케치북 또는 패드가 필요합니다.<br /><br/><br />
+
+         
+          <span id="mainText">게임 진행</span><hr size="3" color="grey">
+          1. 카테고리에서 원하는 게임 선택을 선택합니다.<br/>
+          2. 타이머를 설정하고 START버튼을 누릅니다.<br/>
+          3. 연습문제를 풀고 본게임이 시작됩니다.(본게임 : 10문제)<br/>
+
         </div>
       </div>
     </div>

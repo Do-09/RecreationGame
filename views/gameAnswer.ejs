@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recreation Game</title>
-    <link rel="stylesheet" href="/public/answer.css">
+    <link rel="stylesheet" href="/public/css/answer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 <body>
     <div class="wrap">
         <div class="title">퀴즈 정답</div>
-        <a href="/"><img src="/public/home.png" alt="홈으로" class="homeb"></a>
+        <a href="/"><img src="/public/img/home.png" alt="홈으로" class="homeb"></a>
        
         <br><br>
 
@@ -29,28 +29,28 @@
     
        <br>
 
-        <% if(quiz.type == 'OX'){%>
+        <% if(quiz.type == 'ox'){%>
             <p><%= quiz.explain %></p>
-            <a href="/quiz/ox"><img src="/public/right.png" alt="다음으로" class="right"></a>
+            <a href="/quiz/ox"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
         <%}%>
 
-        <% if(quiz.type == '네글자'){%>
+        <% if(quiz.type == '네글자 이어말하기'){%>
             <p><%= quiz.explain %></p>
-            <a href="/quiz/fourWord"><img src="/public/right.png" alt="다음으로" class="right"></a>
+            <a href="/quiz/fourWord"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
         <%}%>
 
         <% if(quiz.type == '넌센스'){%>
             <p><%= quiz.explain %></p>
-            <a href="/quiz/nonsense"><img src="/public/right.png" alt="다음으로" class="right"></a>
+            <a href="/quiz/nonsense"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
         <%}%>
 
         <% if(quiz.type == '상식퀴즈'){%>
             <p><%= quiz.explain %></p>
-            <a href="/quiz/knowledge"><img src="/public/right.png" alt="다음으로" class="right"></a>
+            <a href="/quiz/knowledge"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
         <%}%>
 
         <% if(quiz.type == '국기 맞히기'){%>
-            <a href="/quiz/flag"><img src="/public/right.png" alt="다음으로" class="right"></a>
+            <a href="/quiz/flag"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
         <%}%>
         
     </div>

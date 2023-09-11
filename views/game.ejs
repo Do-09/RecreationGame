@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recreation Game</title>
-    <link rel="stylesheet" href="/public/question.css">
+    <link rel="stylesheet" href="/public/css/question.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -37,11 +37,11 @@
             <% var quiz = data[0] %> 
             <%= quiz.type %>
         </div>
-        <a href="/"><img src="/public/home.png" alt="홈으로" class="homeb"></a>
+        <a href="/"><img src="/public/img/home.png" alt="홈으로" class="homeb"></a>
         <br><br><br><br>
 
         <div class="timer">
-            <img src="/public/alarm.png" alt="타이머" class="alarm">
+            <img src="/public/img/alarm.png" alt="타이머" class="alarm">
             <div id="myProgress">
                 <div id="myBar"></div>
                 
@@ -51,24 +51,26 @@
         <div id="digit"></div>
 
 
-        <br><p>
+        
 
         <% var random = Math.floor(Math.random() * data.length) %>
         <% var quiz = data[random] %> 
 
         <% if(quiz.type == '국기 맞히기'){%>
-            <img src='<%= quiz.question %>' width="700" height="450">
-        <%} else{ %>      
+            <p><img src='<%= quiz.question %>' width="600" height="400"></p>
+        <%} else{ %> 
+            <br><p>   
                 <%= quiz.question %>
+            </p>
+            <br>
         <%}%>
 
-        </p>
-        <br>
+       
        
         <div class="container">
             <div class="group">
             
-                <% if(quiz.type == "OX"){%>
+                <% if(quiz.type == "ox"){%>
                     <a href="/quiz/ox/<%= quiz.num %>"><button class="category">정답</button></div></a>
                 <%}%>
         
@@ -76,7 +78,7 @@
                     <a href="/quiz/nonsense/<%= quiz.num %>"><button class="category">정답</button></div></a>
                 <%}%>
         
-                <% if(quiz.type == "네글자"){%>
+                <% if(quiz.type == "네글자 이어말하기"){%>
                     <a href="/quiz/fourWord/<%= quiz.num %>"><button class="category">정답</button></div></a>
                 <%}%>
         
@@ -89,64 +91,64 @@
                 <%}%>
 
                 <% if(quiz.type == "영화"){%>
-                    <a href="/quiz/movie"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/movie"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.type == "드라마"){%>
-                    <a href="/quiz/drama"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/drama"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.type == "댄스곡"){%>
-                    <a href="/quiz/dance"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/dance"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.type == "음식"){%>
-                    <a href="/quiz/food"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/food"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
-                <% if(quiz.type == "행사"){%>
-                    <a href="/quiz/anniversary"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                <% if(quiz.type == "기념일"){%>
+                    <a href="/quiz/anniversary"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
-                <% if(quiz.type == "취미생활"){%>
-                    <a href="/quiz/hobby"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                <% if(quiz.type == "취미"){%>
+                    <a href="/quiz/hobby"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.type == "직업"){%>
-                    <a href="/quiz/job"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/job"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.type == "스포츠"){%>
-                    <a href="/quiz/sports"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/sports"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.type == "동물"){%>
-                    <a href="/quiz/animal"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/animal"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
                 <% if(quiz.type == "감정"){%>
-                    <a href="/quiz/emotion"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/emotion"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
                         
                 <% if(quiz.type == "악기"){%>
-                    <a href="/quiz/instrument"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/instrument"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.type == "속담"){%>
-                    <a href="/quiz/proverb"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/proverb"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.type == "인물"){%>
-                    <a href="/quiz/person"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/person"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
                 <% if(quiz.type == "물건"){%>
-                    <a href="/quiz/object"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/object"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
-                <% if(quiz.type == "줄줄이말해요"){%>
-                    <a href="/quiz/actionGame"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                <% if(quiz.type == "줄줄이 말해요"){%>
+                    <a href="/quiz/actionGame"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
 

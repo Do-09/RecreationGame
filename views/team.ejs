@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recreation Game</title>
-    <link rel="stylesheet" href="/public/css/action.css" />
+    <title>TEAM</title>
+    <link rel="stylesheet" href="/public/css/team.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,34 +13,36 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
-    <nav class="top">
-      <h1 class="title">행동 카테고리</h1>
+    
+    <div class="top">
+      <h1 class="top_title">팀 관리 페이지</h1>
 
       <div class="home">
         <a href="/">
           <img class="home" src="/public/img/home.png" alt="홈으로" />
         </a>
       </div>
-    </nav>
+    </div>
+    
 
     <section>
       <hr class="line" color="black" size="5" />
     </section>
-    
-    <article class="btn">
-      <div>
-        <a href="/actionGame1" class="oneofactionbtn">일심동체</a>
-      </div>
-      <div>
-        <a href="/actionGame2" class="bodybtn">몸으로<br />말해요</a>
-      </div>
-      <div>
-        <a href="/gameTimerSetting/actionGame" class="nonstopspeakbtn">줄줄이<br />말해요</a>
-      </div>
-      <div>
-        <a href="/actionGame3" class="nonstopwritebtn">이어<br />그리기</a>
-      </div>
-    </article>>
+
+  
+    <p class="title">생성할 팀 이름을 입력하세요</p>
+
+    <div class="create">
+      <div class="team_Name">팀 이름</div>
+      <button class="team_Button">생성</button>
+      <button class="delete_Button">X</button>
+    </div>  
+
+    <div class="team_Service">
+      <div class="team_Delete">초기화</div>
+      <div class="team_Rank">랭킹</div>
+    </div>
   </body>
 </html>

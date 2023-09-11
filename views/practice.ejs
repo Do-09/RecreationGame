@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recreation Game</title>
-    <link rel="stylesheet" href="/public/question.css">
+    <link rel="stylesheet" href="/public/css/question.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -28,12 +28,12 @@
 <body>
     <div class="wrap">
         <div class="title">연습문제</div>
-        <a href="/"><img src="/public/home.png" alt="홈으로" class="homeb"></a>
+        <a href="/"><img src="/public/img/home.png" alt="홈으로" class="homeb"></a>
        
         <br><br><br><br>
 
         <div class="timer">
-            <img src="/public/alarm.png" alt="타이머" class="alarm">
+            <img src="/public/img/alarm.png" alt="타이머" class="alarm">
             <div id="myProgress">
                 <div id="myBar"></div>
                 
@@ -45,7 +45,7 @@
             <% var quiz = data[0] %>
 
             <% if(quiz.num == 5){%>
-                <img src='<%= quiz.quiz %>' width="700" height="450">
+                <img src='<%= quiz.quiz %>' width="600" height="400">
             <%} else{ %>
                 <%= quiz.quiz %>
             <%}%>
@@ -76,64 +76,64 @@
                 <%}%>
 
                 <% if(quiz.num == 6){%>
-                    <a href="/quiz/movie"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/movie"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.num == 7){%>
-                    <a href="/quiz/drama"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/drama"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.num == 8){%>
-                    <a href="/quiz/dance"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/dance"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.num == 9){%>
-                    <a href="/quiz/food"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/food"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
                 <% if(quiz.num == 10){%>
-                    <a href="/quiz/anniversary"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/anniversary"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
                 <% if(quiz.num == 11){%>
-                    <a href="/quiz/hobby"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/hobby"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.num == 12){%>
-                    <a href="/quiz/job"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/job"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.num == 13){%>
-                    <a href="/quiz/sports"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/sports"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.num == 14){%>
-                    <a href="/quiz/animal"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/animal"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
                 <% if(quiz.num == 15){%>
-                    <a href="/quiz/emotion"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/emotion"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
                         
                 <% if(quiz.num == 16){%>
-                    <a href="/quiz/instrument"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/instrument"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.num == 17){%>
-                    <a href="/quiz/proverb"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/proverb"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
         
                 <% if(quiz.num == 18){%>
-                    <a href="/quiz/person"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/person"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
                 <% if(quiz.num == 19){%>
-                    <a href="/quiz/object"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/object"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
 
                 <% if(quiz.num == 20){%>
-                    <a href="/quiz/actionGame"><img src="/public/right.png" alt="다음으로" class="right"></a>
+                    <a href="/quiz/actionGame"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
                 <%}%>
                 
                 

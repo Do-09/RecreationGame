@@ -1,0 +1,120 @@
+* {
+    font-family: 'Jua', sans-serif;
+}
+
+.top {
+    width: 100vw;
+    height: 100px;
+    background-color: #40BBCA;
+    position: absolute;
+    top:-20px;
+    right: 0px;
+    line-height: 50px;
+}
+.top_title {
+    font-size: 60px;
+    text-align: center;
+}
+.home {
+    width: 70px;
+    position: absolute;
+    left: 10px;
+    top:13px;
+}
+
+.line {
+    width: 100%;
+    position:absolute;
+    top: 70px;
+    right: 0;
+}
+
+.create{
+    position: absolute; /* 위치 지정 */
+    top: 21%; /* 위쪽 여백 50% */
+    left:31%;
+
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    
+}
+
+.title {
+    
+    position:absolute;
+    top:5%;
+    left:31%;
+    font-size: 60px;
+    text-align: center;
+}
+
+.team_Name{
+    font-size:30px;
+    color:dimgrey;
+
+    width:30rem;
+    height:5rem;
+    background-color: #FAF4C0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+.team_Button{
+    font-size:30px;
+
+    width:5rem;
+    height:5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+.delete_Button{
+    border:none;
+    outline:none;
+    background-color: white;
+
+    color:dimgrey;
+    font-size:50px;
+    width:5rem;
+    height:5rem;
+    padding:13px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+.team_Delete {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+
+    font-size:40px;
+    line-height: 6rem;
+
+    width: 10rem;
+    height: 6rem;
+    background-color: #82d5e0;
+    border-radius: 70px;
+    text-align: center;
+    transition: .5s;
+  
+}
+.team_Rank {
+    position: absolute; 
+    bottom: 15px;
+    right: 15px;
+
+    font-size:40px;
+    line-height: 6rem;
+
+    width: 10rem;
+    height: 6rem;
+    background-color:#82d5e0;
+    border-radius: 70px;
+    text-align: center;
+    transition: .5s;
+}

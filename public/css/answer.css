@@ -16,14 +16,12 @@ body {
     border-width: 0px 0px 10px 0px ;
 }
 .homeb {
-   
     width: 100px;
     height: 100px;
     position:absolute;
     top:50px;
     left: 50px;
 }
-
 
 .circle {
     width: 200px;
@@ -34,21 +32,28 @@ body {
     border: 20px solid hsl(27, 100%, 50%);
     margin: auto;
     display: flex;
-   
     justify-content: center; /* 수평 정렬 */
     align-items: center; /* 수직 정렬 */
 }
+
 .answer {
+    width:800px;
     font-size: 100px;
     text-align: center;
-    margin: 2%;
+    margin: auto;
+    justify-content: center; /* 수평 정렬 */
+    align-items: center; /* 수직 정렬 */
+    
     color: hsl(27, 100%, 50%);
 }
 
 p {
+    width:1000px;
     font-size: 50px;
     text-align: center;
-    margin: 2%;
+    margin: auto;
+    justify-content: center; /* 수평 정렬 */
+    align-items: center; /* 수직 정렬 */
 }
 
 .right {

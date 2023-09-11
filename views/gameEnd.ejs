@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recreation Game</title>
-    <link rel="stylesheet" href="/public/gameEnd.css">
+    <link rel="stylesheet" href="/public/css/gameEnd.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -15,9 +15,29 @@
     <div class="wrap">
         <div class="title">
             <% var quiz = data[0] %>
-            <%= quiz.name %>
+            <% if(quiz.type == "ox"){%>ox<%}%>
+            <% if(quiz.type == "fourWord"){%>네글자 이어말하기<%}%>
+            <% if(quiz.type == "knowledge"){%>상식퀴즈<%}%>
+            <% if(quiz.type == "nonsense"){%>넌센스<%}%>
+            <% if(quiz.type == "flag"){%>국기 맞히기<%}%>
+            <% if(quiz.type == "movie"){%>영화<%}%>
+            <% if(quiz.type == "drama"){%>드라마<%}%>
+            <% if(quiz.type == "dance"){%>댄스곡<%}%>
+            <% if(quiz.type == "food"){%>음식<%}%>
+            <% if(quiz.type == "anniversary"){%>기념일<%}%>
+            <% if(quiz.type == "hobby"){%>취미<%}%>
+            <% if(quiz.type == "job"){%>직업<%}%>
+            <% if(quiz.type == "sports"){%>스포츠<%}%>
+            <% if(quiz.type == "animal"){%>동물<%}%>
+            <% if(quiz.type == "emotion"){%>감정<%}%>
+            <% if(quiz.type == "instrument"){%>악기<%}%>
+            <% if(quiz.type == "proverb"){%>속담<%}%>
+            <% if(quiz.type == "person"){%>인물<%}%>
+            <% if(quiz.type == "object"){%>물건<%}%>
+            <% if(quiz.type == "actionGame"){%>줄줄이 말해요<%}%>           
+           
         </div>
-        <a href="/"><img src="/public/home.png" alt="홈으로" class="homeb"></a>
+        <a href="/"><img src="/public/img/home.png" alt="홈으로" class="homeb"></a>
        
         <br>
        
@@ -27,85 +47,85 @@
         <br><br>
         <div class="container">
             <div class="group">
-                <% if(quiz.name == "OX"){%>
+                <% if(quiz.type == "ox"){%>
                     <a href="/quiz/ox"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
 
-                <% if(quiz.name == "네글자"){%>
-                    <a href="/quiz/ox"><div><button class="category">더 풀기</button></div></a>
+                <% if(quiz.type == "fourWord"){%>
+                    <a href="/quiz/fourWord"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
 
-                <% if(quiz.name == "넌센스"){%>
-                    <a href="/quiz/ox"><div><button class="category">더 풀기</button></div></a>
+                <% if(quiz.type == "nonsense"){%>
+                    <a href="/quiz/nonsense"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
                 
-                <% if(quiz.name == "상식퀴즈"){%>
-                    <a href="/quiz/ox"><div><button class="category">더 풀기</button></div></a>
+                <% if(quiz.type == "knowledge"){%>
+                    <a href="/quiz/knowledge"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
 
-                <% if(quiz.name == "국기 맞히기"){%>
+                <% if(quiz.type == "flag"){%>
                     <a href="/quiz/flag"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
 
-                <% if(quiz.name == "영화"){%>
+                <% if(quiz.type == "movie"){%>
                     <a href="/quiz/movie"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "드라마"){%>
+                <% if(quiz.type == "drama"){%>
                     <a href="/quiz/drama"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "댄스곡"){%>
+                <% if(quiz.type == "dance"){%>
                     <a href="/quiz/dance"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "음식"){%>
+                <% if(quiz.type == "food"){%>
                     <a href="/quiz/food"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "행사"){%>
+                <% if(quiz.type == "anniversary"){%>
                     <a href="/quiz/anniversary"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "취미생활"){%>
+                <% if(quiz.type == "hobby"){%>
                     <a href="/quiz/hobby"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "직업"){%>
+                <% if(quiz.type == "job"){%>
                     <a href="/quiz/job"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "스포츠"){%>
+                <% if(quiz.type == "sports"){%>
                     <a href="/quiz/sports"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "동물"){%>
+                <% if(quiz.type == "animal"){%>
                     <a href="/quiz/animal"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "감정"){%>
+                <% if(quiz.type == "emotion"){%>
                     <a href="/quiz/emotion"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
                         
-                <% if(quiz.name == "악기"){%>
+                <% if(quiz.type == "instrument"){%>
                     <a href="/quiz/instrument"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "속담"){%>
+                <% if(quiz.type == "proverb"){%>
                     <a href="/quiz/proverb"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "인물"){%>
+                <% if(quiz.type == "person"){%>
                     <a href="/quiz/person"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
         
-                <% if(quiz.name == "물건"){%>
+                <% if(quiz.type == "object"){%>
                     <a href="/quiz/object"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
 
-                <% if(quiz.name == "줄줄이말해요"){%>
-                    <a href="/quiz/object"><div><button class="category">더 풀기</button></div></a>
+                <% if(quiz.type == "actionGame"){%>
+                    <a href="/quiz/actionGame"><div><button class="category">더 풀기</button></div></a>
                 <%}%>
                 <div><a href="/"><button class="category">끝내기</button></div></a>
             </div>
