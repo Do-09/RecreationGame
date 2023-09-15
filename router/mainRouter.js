@@ -14,6 +14,18 @@ router.get("/team", function(req,res){ //메인화면
     res.render('team')
 })
 
+router.get("/countteam", function(req,res){ //메인화면
+    res.render('count_team')
+})
+
+router.get("/teamrank", function(req,res){ //메인화면
+    res.render('team_rank')
+})
+
+router.get("/teamselect", function(req,res){ //메인화면
+    res.render('team_Select')
+})
+
 router.get("/mainTimerSetting", function(req,res){ //메인타이머 설정
     res.render('mainTimerSetting')
 })
