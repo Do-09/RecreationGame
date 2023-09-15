@@ -35,10 +35,21 @@
     <p class="title">생성할 팀 이름을 입력하세요</p>
 
     <div class="create">
-      <div class="team_Name">팀 이름</div>
-      <button class="team_Button">생성</button>
+      <form action="/teamCreate" method="post">
+      <input type="text" name="name" class="team_Name">팀 이름</div>
+      <input type="submit" class="team_Button">생성</button>
       <button class="delete_Button">X</button>
+      </form>
     </div>  
+
+    <% var name = data %>
+    <% if(name.name == '생성된팀이없습니다'){%>
+    <%} else {%>
+      <% for(var i = 0; i < name.length; i++){%>
+        <%= name[i].name %>
+      <%}%>
+    <%}%>  
+
 
     <div class="team_Service">
       <div class="team_Delete">초기화</div>

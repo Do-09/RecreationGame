@@ -119,7 +119,11 @@
                 <%}%>
         
                 <% if(quiz.type == "스포츠"){%>
-                    <a href="/quiz/sports"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
+                    <form action="/gameScore" method="post">
+                        <input type="submit" name="score" value="성공">
+                        <input type="submit" name="score" value="실패">
+                    </form>
+
                 <%}%>
         
                 <% if(quiz.type == "동물"){%>

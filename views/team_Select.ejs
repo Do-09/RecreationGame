@@ -34,27 +34,24 @@
   
     <p class="title">게임에 참가할 팀을 선택하세요</p>
     
-
-    <div class="container">
-        <div class="set">
-            <div class="team_Name">서진팀</div>
-            <input type="checkbox" class="check"></input><br/>
+    <form action="/gameTimerSetting" method="post">
+        <div class="container">
+            <% var name = data %>
+            <% for(var i = 0; i < name.length; i++){%>
+                <div class="set">
+                    <div class="team_Name">
+                        <%= name[i].name %>
+                    </div>
+                    <input type="checkbox" name = "name" value="<%= name[i].name %>" class="check"></input><br/>
+                </div>
+            <%}%> 
+        </div>  
+    
+     
+        <div class="team_Service">
+            <input type="image" src="/public/img/right.png" alt="다음으로" class="right">
         </div>
+    </form>
 
-        <div class="set">
-            <div class="team_Name">도현팀</div>
-            <input type="checkbox" class="check"></input><br/>
-        </div>
-
-        <div class="set">
-            <div class="team_Name">지현지현팀</div><input type="checkbox" class="check"></input><br/>
-        </div>
-
-    </div>  
-
- 
-    <div class="team_Service">
-        <a href="/"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
-    </div>
   </body>
 </html>

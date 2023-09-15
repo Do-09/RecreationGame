@@ -10,21 +10,41 @@ router.get("/", function(req,res){ //메인화면
     res.render('main')
 })
 
-router.get("/team", function(req,res){ //메인화면
-    res.render('team')
+router.get("/team", function(req,res){ //
+    db.query('select name from team', function(err, result){ 
+        if (result.length > 0) {
+            res.render('team',{data:result})
+        } else{
+            var results = {"name":"생성된팀이없습니다"};
+            res.render('team',{data:results});
+        }
+    });
 })
 
-router.get("/countteam", function(req,res){ //메인화면
+router.post("/teamCreate", function(req,res){ //
+    var name = req.body.name;
+    if (name) {             
+        db.query('SELECT * FROM team WHERE name = ?', [name], function(error, results, fields) {
+            if (error) throw error;
+            if (results.length > 0) {       // db에서의 반환값이 있으면 로그인 성공  
+                res.send(`<script type="text/javascript">alert("동일한 팀 이름이 있습니다"); 
+                document.location.href="javascript:history.back();";</script>`);               
+            } else {
+                db.query('INSERT INTO team (name) VALUES(?)', [name], function (error, data) {})
+                res.redirect("/team")  
+            }
+        })          
+    }
+})
+
+router.get("/countteam", function(req,res){ //
     res.render('count_team')
 })
 
-router.get("/teamrank", function(req,res){ //메인화면
+router.get("/teamrank", function(req,res){ //
     res.render('team_rank')
 })
 
-router.get("/teamselect", function(req,res){ //메인화면
-    res.render('team_Select')
-})
 
 router.get("/mainTimerSetting", function(req,res){ //메인타이머 설정
     res.render('mainTimerSetting')
@@ -45,24 +65,57 @@ router.post("/mainTimer", function(req,res){ //메인타이머 시작
     }
 })
 
-router.get("/gameTimerSetting/:type", function(req,res){ //게임타이머 설정
+router.get("/teamSelect/:type", function(req,res){ //
     var type = req.params.type;
-    result = {"type":type};
-    res.render('gameTimerSetting',{data:result});
+    db.query('delete from gametimer')
+    db.query('insert into gametimer (type) values (?)',[type])
+    db.query('SELECT name FROM team', function(error, results) {
+        if (results.length > 0) {
+            res.render('team_Select',{data:results})
+        } else {
+            res.render('gameTimerSetting')
+        }
+    })
 })
 
-router.post("/gameTimer/:type", function(req,res){ //게임타이머 시작
-    var type = req.params.type
+router.post("/gameTimerSetting", function(req,res){ //
+    var name = req.body.name;
+    console.log(name)
+    if(!name){
+        res.send(`<script type="text/javascript">alert("팀을 선택하세요");
+        document.location.href="javascript:history.back()";</script>`);
+    }
+    db.query('update team set selected = 0')
+    for(var i = 0; i<name.length; i++){
+        if(name[i].length==1){
+            db.query('update team set selected = 1 where name = ?',[name])
+        } else{
+            db.query('update team set selected = 1 where name = ?',[name[i]])
+        }
+
+    }
+    res.render("gameTimerSetting")
+})
+
+// router.get("/gameTimerSetting/:type", function(req,res){ //게임타이머 설정
+//     var type = req.params.type;
+//     result = {"type":type};
+//     res.render('gameTimerSetting',{data:result});
+// })
+
+router.post("/gameTimer", function(req,res){ //게임타이머 시작
     var time = req.body.time
     if(!time){
         res.send(`<script type="text/javascript">alert("타이머를 설정해주세요");
         document.location.href="/mainTimerSetting";</script>`);
     } else{
         time = time * 100;
-        db.query('delete from gametimer')
-        db.query('insert into gametimer (time) values (?)', [time], function(err, result) { 
-            res.send(`<script type="text/javascript">
-        document.location.href="/quiz/${type}/practice";</script>`);
+        db.query('UPDATE gametimer SET time = ?', [time], function(err, result) { 
+            db.query('select type from gametimer', function(err, result1){
+                type = result1[0].type
+                res.send(`<script type="text/javascript">
+                document.location.href="/quiz/${type}/practice";</script>`);
+            })
         });
     }
 })
@@ -157,6 +210,25 @@ router.get("/quiz/:type", function(req,res){ //게임(본 게임)
     })
 })
 
+router.post("/gameScore", function(req,res){ //
+    var score = req.body.score
+    db.query('select * from gametimer',function(err, result){
+        var type = result[0].type
+        if(score=="성공"){
+            db.query('select * from team where selected = 1',[type],function(err, results){
+                for(var i = 0; i<results.length; i++){
+                    add = results[i].sports
+                    add += 1
+                    db.query('update team set sports = ? where selected = 1',[add])
+
+                }
+            })
+        }
+        res.send(`<script type="text/javascript">document.location.href="/quiz/${type}";</script>`); 
+    })
+
+})
+
 router.get("/quiz/:type/:num", function(req,res){ // 정답(본 게임)
     type = req.params.type
     if(type=="ox"){var sql = "select * from ox where num = ?"}
@@ -185,5 +257,6 @@ router.get("/quiz/:type/:num", function(req,res){ // 정답(본 게임)
         })
     });
 })
+
 
 module.exports = router
