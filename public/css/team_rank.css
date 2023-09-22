@@ -129,3 +129,29 @@
     text-align: center;
     font-size: 50px;
 }
+
+.group{
+    width:80%;
+    height:80%;
+    margin:8% auto;
+    padding: 20px;
+    text-align: center;
+    align-items: center; /* 수직 가운데 정렬 */
+}
+.none{
+    width: 30%;
+    height:30%;
+    
+}
+.none_text{
+    font-size: 70px;
+    font-weight: 100;
+}
+.go_text{
+    font-size: 50px;
+    font-weight: 100;
+    color:#F6B157;
+}
+.go_text:hover{
+    color:hsl(27, 100%, 50%);
+}

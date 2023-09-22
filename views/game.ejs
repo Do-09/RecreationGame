@@ -120,11 +120,19 @@
         
                 <% if(quiz.type == "스포츠"){%>
                     <form action="/gameScore" method="post">
+                        <div class="count">
+                            <button class="false" name="score" value="실패" class="false_text">틀림</button>
+                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                        </div>
+                    </form>
+                <%}%>
+<!-- 
+                    <form action="/gameScore" method="post">
                         <input type="submit" name="score" value="성공">
                         <input type="submit" name="score" value="실패">
-                    </form>
+                    </form> -->
 
-                <%}%>
+
         
                 <% if(quiz.type == "동물"){%>
                     <a href="/quiz/animal"><img src="/public/img/right.png" alt="다음으로" class="right"></a>

@@ -1,7 +1,9 @@
 * {
     font-family: 'Jua', sans-serif;
 }
-
+body {
+    margin: 0;
+}
 .top {
     width: 100vw;
     height: 100px;
@@ -32,7 +34,7 @@
 .create{
     position: absolute; /* 위치 지정 */
     top: 21%; /* 위쪽 여백 50% */
-    left:31%;
+    left:33%;
 
     display: flex;
     justify-content: center;
@@ -54,7 +56,7 @@
     color:dimgrey;
 
     width:30rem;
-    height:5rem;
+    height:4.7rem;
     background-color: #FAF4C0;
     display: flex;
     flex-wrap: wrap;
@@ -71,21 +73,7 @@
     justify-content: center; /* 수평 가운데 정렬 */
     align-items: center; /* 수직 가운데 정렬 */
 }
-.delete_Button{
-    border:none;
-    outline:none;
-    background-color: white;
 
-    color:dimgrey;
-    font-size:50px;
-    width:5rem;
-    height:5rem;
-    padding:13px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* 수평 가운데 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
-}
 
 .team_Delete {
     position: absolute;
@@ -94,7 +82,7 @@
 
     font-size:40px;
     line-height: 6rem;
-
+    cursor: pointer;
     width: 10rem;
     height: 6rem;
     background-color: #82d5e0;
@@ -107,14 +95,106 @@
     position: absolute; 
     bottom: 15px;
     right: 15px;
-
+    cursor: pointer;
     font-size:40px;
     line-height: 6rem;
+    text-decoration: none;
 
+    border: black 2px solid;
+    color:black;
     width: 10rem;
     height: 6rem;
     background-color:#82d5e0;
     border-radius: 70px;
     text-align: center;
     transition: .5s;
+}
+
+.list{
+    position:absolute;
+    top:36%;
+    left:36%;
+    border: #40BBCA 3px solid;
+    width:30rem;
+    height:35rem;
+}
+.list_Title{
+    font-size: 25px;
+    text-align: center;
+}
+.list_team{
+    font-size: 30px;
+    
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+   
+
+}
+.list_group{
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+.delete_Button{
+    border:none;
+    outline:none;
+    background-color: white;
+
+    color:dimgrey;
+    font-size: 30px;
+    line-height: 3rem;
+    width:3rem;
+    height:3rem;
+   
+    cursor: pointer;
+}
+
+#team_popup{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.popup{
+    width: 27%; /* 모달의 너비를 80%로 설정 */
+    height: 20%; /* 모달의 높이를 80%로 설정 */
+    background:#ffffff;
+    border: black 2px solid;
+    margin: 20% auto; /* 모달 팝업을 중앙에 위치시킴 */
+    padding: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.popup_text{
+    margin:10%;
+}
+
+.popup button{
+    width:6rem;
+    height:4rem;
+    font-size: 1.5rem;
+    background-color: #82d5e0;
+    border: none;
+    border-radius: 10px;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+.popup button.ok{
+    margin:0px 30px;
+}
+.popup button.no{
+    margin:0px 30px;
+}
+.popup button.ok:hover{
+    background-color:#4d8288;
+}
+.popup button.no:hover{
+    background-color:#4d8288;
 }

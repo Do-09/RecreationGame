@@ -39,39 +39,79 @@
             <div class="text3">총점</div>
         </div>
 
+        <% var name = data %>
+        <% var i = 1 %>
         <div class="rank">
-            <div class="circle" style="background-color: gold;">1</div>
-            <div class="first_team">도현팀</div>
-            <div class="Score">100</div>
+          <div class="circle" style="background-color: gold;">1</div>
+          <div class="first_team"><%= name[0].name %></div>
+          <div class="Score"><%= name[0].total %></div>
         </div>
         <hr class="line_Rank">
-
-        <div class="rank">
+        <% while(i<name.length) { %>
+          <% if(name[i].total == name[i-1].total){ %>
+            <div class="rank">
+              <div class="circle" style="background-color: gold;">1</div>
+              <div class="first_team"><%= name[i].name %></div>
+              <div class="Score"><%= name[i].total %></div>
+            </div>
+            <hr class="line_Rank">
+            <%i += 1%>
+          <%}else{break;%>      
+          <%}%>
+        <%}%>
+        <%if(i < name.length && i < 2){%>
+          <div class="rank">
             <div class="circle" style="background-color: silver;">2</div>
-            <div class="second_team">블랙핑크</div>
-            <div class="Score"></div>
-        </div>
-        <hr class="line_Rank">
+            <div class="first_team"><%= name[i].name %></div>
+            <div class="Score"><%= name[i].total %></div>
+          </div>
+          <hr class="line_Rank">
+          <%i += 1%>
+          <% while(i<name.length) { %>
+            <% if(name[i].total == name[i-1].total){ %>
+              <div class="rank">
+                <div class="circle" style="background-color: silver;">2</div>
+                <div class="first_team"><%= name[i].name %></div>
+                <div class="Score"><%= name[i].total %></div>
+              </div>
+              <hr class="line_Rank">
+              <%i += 1%>
+            <%}else{break;%>      
+            <%}%>
+          <%}%>
+        <%}%>
 
-        <div class="rank">
+        <%if(i < name.length && i < 3){%>
+          <div class="rank">
             <div class="circle" style="background-color: #DE844F;">3</div>
-            <div class="third_team">가나다라마</div>
-            <div class="Score"></div>
-        </div>
-        <hr class="line_Rank">
+            <div class="first_team"><%= name[i].name %></div>
+            <div class="Score"><%= name[i].total %></div>
+          </div>
+          <hr class="line_Rank">
+          <%i += 1%>
+          <% while(i<name.length) { %>
+            <% if(name[i].total == name[i-1].total){ %>
+              <div class="rank">
+                <div class="circle" style="background-color: #DE844F;">3</div>
+                <div class="first_team"><%= name[i].name %></div>
+                <div class="Score"><%= name[i].total %></div>
+              </div>
+              <hr class="line_Rank">
+              <%i += 1%>
+            <%}else{break;%>      
+            <%}%>
+          <%}%>
+        <%}%>
 
-        <div class="rank">
-            <div class="circle" style="background-color: #F6F6F6;">4</div>
-            <div class="fourth_team">랭킹어렵당</div>
-            <div class="Score"></div>
-        </div>
-        <hr class="line_Rank">
-
-        <div class="rank">
-            <div class="circle" style="background-color: #F6F6F6;">5</div>
-            <div class="fifth_team">그만늘어나</div>
-            <div class="Score">23</div>
-        </div>
+        <% while(i<name.length) { %>
+          <div class="rank">
+            <div class="circle" style="background-color: #F6F6F6;"><%=i+1%></div>
+            <div class="first_team"><%= name[i].name %></div>
+            <div class="Score"><%= name[i].total %></div>
+          </div>
+          <hr class="line_Rank">
+          <%i += 1%>
+        <%}%>
     </div>
 
 

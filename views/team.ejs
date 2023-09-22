@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/public/js/team.js" defer></script>
     <title>TEAM</title>
     <link rel="stylesheet" href="/public/css/team.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,28 +33,60 @@
     </section>
 
   
-    <p class="title">생성할 팀 이름을 입력하세요</p>
+    <p class="title">생성할 팀 이름을 입력하세요(2글자~8글자)</p>
 
+    <form action="/teamCreate" method="post">
     <div class="create">
-      <form action="/teamCreate" method="post">
-      <input type="text" name="name" class="team_Name">팀 이름</div>
-      <input type="submit" class="team_Button">생성</button>
-      <button class="delete_Button">X</button>
-      </form>
-    </div>  
-
-    <% var name = data %>
-    <% if(name.name == '생성된팀이없습니다'){%>
-    <%} else {%>
-      <% for(var i = 0; i < name.length; i++){%>
-        <%= name[i].name %>
-      <%}%>
-    <%}%>  
+      <input type="text" name="name" class="team_Name"></input>
+      <button class="team_Button">생성</button>     
+    </div> 
+    </form> 
+    
 
 
-    <div class="team_Service">
-      <div class="team_Delete">초기화</div>
-      <div class="team_Rank">랭킹</div>
+    <form action="/teamdel" method="post">
+      <div class="list">
+        <div class="list_Title"><팀 리스트></div>
+        <ol class="list_team">
+          <% var name = data %>
+          <% if(name.name == '생성된팀이없습니다'){%>
+            <div class="list_group">
+              <li>생성된 팀이 없습니다.</li>
+            </div>
+          <%} else {%>
+            <% for(var i = 0; i < name.length; i++){%>
+              <div class="list_group">
+                <li><%= name[i].name %></li>
+                <button class="delete_Button" name="name" value="<%= name[i].name %>">X</button>
+              </div>
+            <%}%>
+          <%}%>     
+        </ol>
+      </div>
+    </form>
+    
+
+    <div>
+      <div>
+        <button id="delete" class="team_Delete">초기화</button>
+        <div id="team_popup">
+          <div class="popup" id="popup">
+            <p id="popup-text" ></p>
+            <span class="popup_text">팀 리스트를 초기화하시겠습니까?</span><br><br>
+
+              <div class="container_button">
+                <a href="/teamAlldel"><button class="ok">네</button></a>
+                <button class="no">아니요</button>
+              </div>
+
+
+          
+          </div>
+        </div>
+      </div>
+      
     </div>
+    <button><a href="/teamRank" class="team_Rank">랭킹</a></button>
+  
   </body>
 </html>
