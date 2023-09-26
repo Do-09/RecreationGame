@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recreation Game</title>
-    <script src="/public/main.js" defer></script>
+    <script src="/public/js/main.js" defer></script>
     <link rel="stylesheet" href="/public/css/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,8 +47,16 @@
           <!-- 모달 팝업에 표시할 텍스트 요소 -->
           <span id="mainText">게임 설명</span><hr size="3" color="grey">
           먼저 퀴즈와 행동 중 선택합니다.<br/>
-          퀴즈는 네 글자 이어말하기, 상식, ox, 넌센스, 국기 맞추기로 구성되어있습니다.<br/>
-          행동은 일심동체, 몸으로 말해요, 줄줄이 말하기, 이어 그리기로 구성되어있습니다.<br/><br/><br />
+          퀴즈는 네 글자 이어말하기, 상식, ox, 넌센스, 국기 맞추기로 구성되어 있습니다.<br/>
+          행동은 일심동체, 몸으로 말해요, 줄줄이 말하기, 이어 그리기로 구성되어 있습니다.<br/><br/><br />
+
+          <span id="mainText">팀 설명</span><hr size="3" color="grey">
+          - 메인에서 팀 이미지를 클릭하면 팀 생성 페이지로 이동합니다. <br/>
+          - 팀 이름은 2~8글자로 생성합니다.<br/>
+          - 팀은 언제든지 생성하고 삭제할 수 있고,<br/>&nbsp;&nbsp;초기화 버튼으로 한 번에 모두 삭제가 가능합니다.<br/>
+          - 팀 랭킹 버튼을 눌러 전체 게임 점수를 총합한 점수와 순위를 볼 수 있습니다.
+          <br/><br/><br />
+
 
           <span id="mainText">퀴즈 게임</span><hr size="3" color="grey">
           <span id="midText">네 글자 이어말하기</span> 네 글자의 단어 중 앞 두 글자를 보고 나머지 글자를 맞히는 게임입니다.<br />
@@ -68,10 +76,13 @@
 
          
           <span id="mainText">게임 진행</span><hr size="3" color="grey">
-          1. 카테고리에서 원하는 게임 선택을 선택합니다.<br/>
-          2. 타이머를 설정하고 START버튼을 누릅니다.<br/>
-          3. 연습문제를 풀고 본게임이 시작됩니다.(본게임 : 10문제)<br/>
-
+          1. TEAM 이미지를 클릭 후 팀 생성 페이지에서 팀을 생성합니다.(개인 참여 시 생략 가능)<br/>
+          2. 카테고리에서 원하는 게임을 선택합니다.<br/>
+          3. 타이머를 설정하고 START버튼을 누릅니다.<br/>
+          4. 연습문제를 풀고 본게임이 시작됩니다.(본게임 : 10문제)<br/>
+          5. (퀴즈게임 시)문제를 풀 때마다 맞춘 팀을 체크합니다.<br/>
+            &nbsp;&nbsp;&nbsp;(행동게임 시)문제를 풀 때마다 맞춤,틀림 버튼을 누릅니다.<br/>
+          6. 10문제를 다 풀었을 시 더 풀거나 멈출 수 있고, 해당 카테고리 게임의 랭킹과 점수를 확인할 수 있습니다.
         </div>
       </div>
     </div>

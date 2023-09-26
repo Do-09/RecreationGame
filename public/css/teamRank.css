@@ -31,9 +31,9 @@
 
 .back {
     width: 7rem;
-    position: absolute;
-    bottom: 4px;
-    left: 15px;
+    position: fixed;
+    bottom: 5px;
+    left: 20px;
 }
 
 .container {

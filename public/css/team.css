@@ -43,10 +43,7 @@ body {
 }
 
 .title {
-    
-    position:absolute;
-    top:5%;
-    left:31%;
+    margin-top: 6%;
     font-size: 60px;
     text-align: center;
 }
@@ -81,12 +78,15 @@ body {
     left: 15px;
 
     font-size:40px;
-    line-height: 6rem;
+    line-height: 10rem;
     cursor: pointer;
-    width: 10rem;
-    height: 6rem;
+    width:10rem;
+    height:10rem;
     background-color: #82d5e0;
-    border-radius: 70px;
+    border:none;
+
+    box-shadow: inset 2px 3px 7px rgba(0,0,0,0.3);
+    border-radius: 60px;
     text-align: center;
     transition: .5s;
   
@@ -97,25 +97,35 @@ body {
     right: 15px;
     cursor: pointer;
     font-size:40px;
-    line-height: 6rem;
+    line-height: 10rem;
     text-decoration: none;
 
     border: black 2px solid;
     color:black;
-    width: 10rem;
-    height: 6rem;
+    width:10rem;
+    height:10rem;
     background-color:#82d5e0;
-    border-radius: 70px;
+    border:none;
+
+    box-shadow: inset 2px 3px 7px rgba(0,0,0,0.3);
+    border-radius: 60px;
     text-align: center;
     transition: .5s;
+}
+.team_Delete:hover{
+    background-color: #5c979f;
+}
+.team_Rank:hover{
+    background-color: #5c979f;
 }
 
 .list{
     position:absolute;
+    
     top:36%;
-    left:36%;
+    left:34%;
     border: #40BBCA 3px solid;
-    width:30rem;
+    width:35.4rem;
     height:35rem;
 }
 .list_Title{
