@@ -48,7 +48,7 @@ router.post("/teamCreate", function(req,res){ // 팀 생성
         res.send(`<script type="text/javascript">alert("2글자~8글자로 입력해 주세요."); 
                 document.location.href="javascript:history.back();";</script>`); 
     }
-    if (name && (name.length >= 2 && name.length <= 8)) { // 2글자 ~ 8글자 이내         
+    if (name && (name.length >= 2 && name.length <= 8)) { // 2글자 ~ 8글자 이내      
         db.query('SELECT * FROM team WHERE name = ?', [name], function(error, results, fields) {
             if (error) throw error;
             if (results.length > 0) {       // 동일한 팀 이름이 있을 경우 
@@ -104,22 +104,32 @@ router.get("/timeout", function(req,res){ //타이머 시간초과
 // 게임 카테고리-------------------------------------------------------------------------------------------------------------
 
 router.get("/quiz", function(req,res){ //퀴즈 카테고리
+    db.query('delete from actiontype')
+    db.query('insert into actiontype (type) values ("else")')
     res.render('quiz')
 })
 
 router.get("/action", function(req,res){ //액션 카테고리
+    db.query('delete from actiontype')
+    db.query('insert into actiontype (type) values ("else")')
     res.render('action')
 })
 
 router.get("/actionGame1", function(req,res){ //일심동체
+    db.query('delete from actiontype')
+    db.query('insert into actiontype (type) values ("mind")')
     res.render('actionGame1')
 })
 
 router.get("/actionGame2", function(req,res){ //몸으로 말해요
+    db.query('delete from actiontype')
+    db.query('insert into actiontype (type) values ("body")')
     res.render('actionGame2')
 })
 
 router.get("/actionGame3", function(req,res){ //이어 그리기
+    db.query('delete from actiontype')
+    db.query('insert into actiontype (type) values ("draw")')
     res.render('actionGame3')
 })
 
@@ -237,15 +247,32 @@ router.post("/gameScore", function(req,res){ // 행동 게임 팀 점수 추가
         var type = result[0].type
         if(score=="성공"){  // 성공일 경우 1점씩 추가
             db.query('select * from team where selected = 1',function(err, results){
-                for(var i = 0; i<results.length; i++){
-                    Name = results[i].name
-                    total = results[i].total
-                    total += 1
-                    add = results[i].sports
-                    add += 1
-                    db.query('update team set sports = ? where selected = 1 and name = ?',[add, Name])
-                    db.query('update team set total = ? where selected = 1 and name = ?',[total, Name])
-                }
+                db.query('select * from actiontype', function(err, actiontype){
+                    action = actiontype[0].type
+                    for(var i = 0; i<results.length; i++){
+                        Name = results[i].name
+                        total = results[i].total
+                        total += 1
+                        db.query('update team set total = ? where selected = 1 and name = ?',[total, Name])
+                        if(type=='actionGame'){
+                            add = results[i].actiongame
+                            add += 1
+                            db.query('update team set actiongame = ? where selected = 1 and name = ?',[add, Name])
+                        } else if(action == 'mind'){
+                            add = results[i].mind
+                            add += 1
+                            db.query('update team set mind = ? where selected = 1 and name = ?',[add, Name])
+                        } else if(action == 'body'){
+                            add = results[i].body
+                            add += 1
+                            db.query('update team set body = ? where selected = 1 and name = ?',[add, Name])
+                        } else if(action == 'draw'){
+                            add = results[i].draw
+                            add += 1
+                            db.query('update team set draw = ? where selected = 1 and name = ?',[add, Name])
+                        }
+                    }
+                })
             })
         }
         res.send(`<script type="text/javascript">document.location.href="/quiz/${type}";</script>`); 
@@ -271,7 +298,7 @@ router.post("/gameTimer", function(req,res){ // 게임타이머 설정 시간 DB
     var time = req.body.time
     if(!time){
         res.send(`<script type="text/javascript">alert("타이머를 설정해주세요");
-        document.location.href="/mainTimerSetting";</script>`);
+        document.location.href="javascript:history.back()";</script>`);
     } else{
         time = time * 100;
         db.query('UPDATE gametimer SET time = ?', [time], function(err, result) { 
@@ -286,6 +313,7 @@ router.post("/gameTimer", function(req,res){ // 게임타이머 설정 시간 DB
 
 
 router.get("/quiz/:type/practice", function(req,res){ // 연습문제
+    db.query('delete from count10')
     db.query("select * from exquiz where type = ?",[req.params.type], function(err, result){
         db.query("select * from gametimer", function(err,result1){
             res.render('practice',{data:result, data1:result1})
@@ -345,52 +373,91 @@ router.get("/quiz/:type", function(req,res){ // 게임(본 게임)
                 db.query("delete from count10")
                 db.query("select * from exquiz where type = ?",[type], function(err, result){
                     db.query("select * from gametimer", function(err, result1){
-                        if(type == 'fourWord'){
-                            db.query('SELECT * FROM team order by fourword desc', function(error, rank) {
-                                if(rank.length>0){
-                                    res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                }else{
-                                    var rank = {"name":"생성된팀이없습니다"};
-                                    res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                }
-                            })
-                        } else if(type == 'ox'){
-                            db.query('SELECT * FROM team order by ox desc', function(error, rank) {
-                                if(rank.length>0){
-                                    res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                }else{
-                                    var rank = {"name":"생성된팀이없습니다"};
-                                    res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                }
-                            })
-                        } else if(type == 'nonsense'){
-                            db.query('SELECT * FROM team order by nonsense desc', function(error, rank) {
-                                if(rank.length>0){
-                                    res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                }else{
-                                    var rank = {"name":"생성된팀이없습니다"};
-                                    res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                }
-                            })
-                        } else if(type == 'knowledge'){
-                            db.query('SELECT * FROM team order by knowledge desc', function(error, rank) {
-                                if(rank.length>0){
-                                    res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                }else{
-                                    var rank = {"name":"생성된팀이없습니다"};
-                                    res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                }
-                            })
-                        } else if(type == 'flag'){
-                            db.query('SELECT * FROM team order by flag desc', function(error, rank) {
-                                if(rank.length>0){
-                                    res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                }else{
-                                    var rank = {"name":"생성된팀이없습니다"};
-                                    res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                }
-                            })
-                        }
+                        db.query('select * from actiontype', function(err, actiontype){
+                            if(actiontype.length>0){action = actiontype[0].type }
+                            if(type == 'fourWord'){
+                                db.query('SELECT * FROM team order by fourword desc', function(error, rank) {
+                                    if(rank.length>0){
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                    }else{
+                                        var rank = {"name":"생성된팀이없습니다"};
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                    }
+                                })
+                            } else if(type == 'ox'){
+                                db.query('SELECT * FROM team order by ox desc', function(error, rank) {
+                                    if(rank.length>0){
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                    }else{
+                                        var rank = {"name":"생성된팀이없습니다"};
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                    }
+                                })
+                            } else if(type == 'nonsense'){
+                                db.query('SELECT * FROM team order by nonsense desc', function(error, rank) {
+                                    if(rank.length>0){
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                    }else{
+                                        var rank = {"name":"생성된팀이없습니다"};
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                    }
+                                })
+                            } else if(type == 'knowledge'){
+                                db.query('SELECT * FROM team order by knowledge desc', function(error, rank) {
+                                    if(rank.length>0){
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                    }else{
+                                        var rank = {"name":"생성된팀이없습니다"};
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                    }
+                                })
+                            } else if(type == 'flag'){
+                                db.query('SELECT * FROM team order by flag desc', function(error, rank) {
+                                    if(rank.length>0){
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                    }else{
+                                        var rank = {"name":"생성된팀이없습니다"};
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                    }
+                                })
+                            } else if(type == 'actionGame'){
+                                db.query('SELECT * FROM team order by actiongame desc', function(error, rank) {
+                                    if(rank.length>0){
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                    }else{
+                                        var rank = {"name":"생성된팀이없습니다"};
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                    }
+                                })
+                            } else if(action == 'mind'){
+                                db.query('SELECT * FROM team order by mind desc', function(error, rank) {
+                                    if(rank.length>0){
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank, action:actiontype}) // 게임 종료 페이지로 이동
+                                    }else{
+                                        var rank = {"name":"생성된팀이없습니다"};
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                    }
+                                })
+                            } else if(action == 'body'){
+                                db.query('SELECT * FROM team order by body desc', function(error, rank) {
+                                    if(rank.length>0){
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank, action:actiontype}) // 게임 종료 페이지로 이동
+                                    }else{
+                                        var rank = {"name":"생성된팀이없습니다"};
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                    }
+                                })
+                            } else if(action == 'draw'){
+                                db.query('SELECT * FROM team order by draw desc', function(error, rank) {
+                                    if(rank.length>0){
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank, action:actiontype}) // 게임 종료 페이지로 이동
+                                    }else{
+                                        var rank = {"name":"생성된팀이없습니다"};
+                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                    }
+                                })
+                            }
+                        })                    
                     })
                 })
             }   

@@ -32,13 +32,10 @@ body {
 }
 
 .create{
-    position: absolute; /* 위치 지정 */
-    top: 21%; /* 위쪽 여백 50% */
-    left:33%;
 
+    margin:0px auto;
     display: flex;
     justify-content: center;
-    padding: 20px;
     
 }
 
@@ -120,10 +117,10 @@ body {
 }
 
 .list{
-    position:absolute;
-    
-    top:36%;
-    left:34%;
+    text-align: center;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    margin:10px auto;
     border: #40BBCA 3px solid;
     width:35.4rem;
     height:35rem;
@@ -131,23 +128,24 @@ body {
 .list_Title{
     font-size: 25px;
     text-align: center;
+    margin:0 auto;
 }
 .list_team{
     font-size: 30px;
-    
+    text-align: center;
     display: table;
-    margin-left: auto;
-    margin-right: auto;
-   
+    margin:0 auto;
 
 }
 .list_group{
-
+    text-align: center;
+    margin:0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* 수평 가운데 정렬 */
     align-items: center; /* 수직 가운데 정렬 */
 }
+
 .delete_Button{
     border:none;
     outline:none;
