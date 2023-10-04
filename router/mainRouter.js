@@ -327,7 +327,6 @@ router.get("/quiz/:type/practice/answer", function(req,res){ // 연습문제 정
     })
 })
 
-count = 0
 router.get("/quiz/:type", function(req,res){ // 게임(본 게임)
     var type = req.params.type
     if(type=="ox"){var sql = "select * from ox order by rand() limit 1"}
@@ -354,113 +353,113 @@ router.get("/quiz/:type", function(req,res){ // 게임(본 게임)
         quiz = result[0].question
         resType = result[0].type
         db.query("select * from count10",function(err, reset){
-            if(reset.length > 0 && resType != reset[0].type){ // 기존에 풀던 다른 유형의 게임 데이터가 남아있을 경우
+            if((reset.length > 0 && reset.length < 11) && resType != reset[0].type){ // 기존에 풀던 다른 유형의 게임 데이터가 남아있을 경우
                 count = 0 // 0문제로 초기화
                 db.query("delete from count10") // 데이터 삭제
             }
         })
         db.query("select * from count10 where quiz = ?",[quiz], function(err, check){
-            if(check.length>0){ // 10문제 중 중복될 경우
-                res.send(`<script type="text/javascript">document.location.href="/quiz/${type}";</script>`); // 새로 페이지 불러옴
-            } else if(check.length==0 && count<10){ // 문제가 10개 이하이며 중복이 아닐 경우
-                count += 1
-                db.query("insert into count10 (type, quiz) values(?, ?)",[resType, quiz])
-                db.query("select * from gametimer", function(err, result1){
-                    res.render('game',{data:result, data1:result1}) 
-                })
-            } else{ // 10문제를 다 풀었을 경우
-                count = 0;
-                db.query("delete from count10")
-                db.query("select * from exquiz where type = ?",[type], function(err, result){
+            db.query("select * from count10",function(err, count){
+                if(check.length>0){ // 10문제 중 중복될 경우
+                    res.send(`<script type="text/javascript">document.location.href="/quiz/${type}";</script>`); // 새로 페이지 불러옴
+                } else if(check.length==0 && count.length<10){ // 문제가 10개 미만이며 중복이 아닐 경우
+                    db.query("insert into count10 (type, quiz) values(?, ?)",[resType, quiz])
                     db.query("select * from gametimer", function(err, result1){
-                        db.query('select * from actiontype', function(err, actiontype){
-                            if(actiontype.length>0){action = actiontype[0].type }
-                            if(type == 'fourWord'){
-                                db.query('SELECT * FROM team order by fourword desc', function(error, rank) {
-                                    if(rank.length>0){
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                    }else{
-                                        var rank = {"name":"생성된팀이없습니다"};
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                    }
-                                })
-                            } else if(type == 'ox'){
-                                db.query('SELECT * FROM team order by ox desc', function(error, rank) {
-                                    if(rank.length>0){
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                    }else{
-                                        var rank = {"name":"생성된팀이없습니다"};
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                    }
-                                })
-                            } else if(type == 'nonsense'){
-                                db.query('SELECT * FROM team order by nonsense desc', function(error, rank) {
-                                    if(rank.length>0){
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                    }else{
-                                        var rank = {"name":"생성된팀이없습니다"};
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                    }
-                                })
-                            } else if(type == 'knowledge'){
-                                db.query('SELECT * FROM team order by knowledge desc', function(error, rank) {
-                                    if(rank.length>0){
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                    }else{
-                                        var rank = {"name":"생성된팀이없습니다"};
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                    }
-                                })
-                            } else if(type == 'flag'){
-                                db.query('SELECT * FROM team order by flag desc', function(error, rank) {
-                                    if(rank.length>0){
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                    }else{
-                                        var rank = {"name":"생성된팀이없습니다"};
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                    }
-                                })
-                            } else if(type == 'actionGame'){
-                                db.query('SELECT * FROM team order by actiongame desc', function(error, rank) {
-                                    if(rank.length>0){
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
-                                    }else{
-                                        var rank = {"name":"생성된팀이없습니다"};
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                    }
-                                })
-                            } else if(action == 'mind'){
-                                db.query('SELECT * FROM team order by mind desc', function(error, rank) {
-                                    if(rank.length>0){
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank, action:actiontype}) // 게임 종료 페이지로 이동
-                                    }else{
-                                        var rank = {"name":"생성된팀이없습니다"};
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                    }
-                                })
-                            } else if(action == 'body'){
-                                db.query('SELECT * FROM team order by body desc', function(error, rank) {
-                                    if(rank.length>0){
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank, action:actiontype}) // 게임 종료 페이지로 이동
-                                    }else{
-                                        var rank = {"name":"생성된팀이없습니다"};
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                    }
-                                })
-                            } else if(action == 'draw'){
-                                db.query('SELECT * FROM team order by draw desc', function(error, rank) {
-                                    if(rank.length>0){
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank, action:actiontype}) // 게임 종료 페이지로 이동
-                                    }else{
-                                        var rank = {"name":"생성된팀이없습니다"};
-                                        res.render('gameEnd',{data:result, data1:result1, rank:rank})
-                                    }
-                                })
-                            }
-                        })                    
+                        res.render('game',{data:result, data1:result1}) 
                     })
-                })
-            }   
+                } else { // 10문제를 다 풀었을 경우
+                    db.query("delete from count10")
+                    db.query("select * from exquiz where type = ?",[type], function(err, result){
+                        db.query("select * from gametimer", function(err, result1){
+                            db.query('select * from actiontype', function(err, actiontype){
+                                if(actiontype.length>0){action = actiontype[0].type }
+                                if(type == 'fourWord'){
+                                    db.query('SELECT * FROM team order by fourword desc', function(error, rank) {
+                                        if(rank.length>0){
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                        }else{
+                                            var rank = {"name":"생성된팀이없습니다"};
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                        }
+                                    })
+                                } else if(type == 'ox'){
+                                    db.query('SELECT * FROM team order by ox desc', function(error, rank) {
+                                        if(rank.length>0){
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                        }else{
+                                            var rank = {"name":"생성된팀이없습니다"};
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                        }
+                                    })
+                                } else if(type == 'nonsense'){
+                                    db.query('SELECT * FROM team order by nonsense desc', function(error, rank) {
+                                        if(rank.length>0){
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                        }else{
+                                            var rank = {"name":"생성된팀이없습니다"};
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                        }
+                                    })
+                                } else if(type == 'knowledge'){
+                                    db.query('SELECT * FROM team order by knowledge desc', function(error, rank) {
+                                        if(rank.length>0){
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                        }else{
+                                            var rank = {"name":"생성된팀이없습니다"};
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                        }
+                                    })
+                                } else if(type == 'flag'){
+                                    db.query('SELECT * FROM team order by flag desc', function(error, rank) {
+                                        if(rank.length>0){
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                        }else{
+                                            var rank = {"name":"생성된팀이없습니다"};
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                        }
+                                    })
+                                } else if(type == 'actionGame'){
+                                    db.query('SELECT * FROM team order by actiongame desc', function(error, rank) {
+                                        if(rank.length>0){
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank}) // 게임 종료 페이지로 이동
+                                        }else{
+                                            var rank = {"name":"생성된팀이없습니다"};
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                        }
+                                    })
+                                } else if(action == 'mind'){
+                                    db.query('SELECT * FROM team order by mind desc', function(error, rank) {
+                                        if(rank.length>0){
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank, action:actiontype}) // 게임 종료 페이지로 이동
+                                        }else{
+                                            var rank = {"name":"생성된팀이없습니다"};
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                        }
+                                    })
+                                } else if(action == 'body'){
+                                    db.query('SELECT * FROM team order by body desc', function(error, rank) {
+                                        if(rank.length>0){
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank, action:actiontype}) // 게임 종료 페이지로 이동
+                                        }else{
+                                            var rank = {"name":"생성된팀이없습니다"};
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                        }
+                                    })
+                                } else if(action == 'draw'){
+                                    db.query('SELECT * FROM team order by draw desc', function(error, rank) {
+                                        if(rank.length>0){
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank, action:actiontype}) // 게임 종료 페이지로 이동
+                                        }else{
+                                            var rank = {"name":"생성된팀이없습니다"};
+                                            res.render('gameEnd',{data:result, data1:result1, rank:rank})
+                                        }
+                                    })
+                                }
+                            })                    
+                        })
+                    })
+                }
+            })
         })
     })
 })
