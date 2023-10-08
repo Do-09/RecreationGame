@@ -39,9 +39,17 @@
       <% var time = data %>
       <div class="container">
         <div class="alarm_setting">
-          <div style="text-align: center;"><img class="alarm" src="/public/img/alarm-clock.png" /><div class="number" id = countdown>
-          <%= time.time / 100 %>
-          </div></div>
+          <div style="text-align: center;"><img class="alarm" src="/public/img/alarm-clock.png" />
+            <% if((time.time / 100)< 1000){%>
+            <div class="number" id = countdown>
+              <%= time.time / 100 %>
+            </div>
+            <%} else{%>
+            <div class="number1000" id = countdown>
+              <%= time.time / 100 %>
+            </div>
+            <%}%>
+          </div>
           <br><br> <br>
 
           <div id="myProgress">
@@ -53,35 +61,43 @@
 
           <div id="digit"></div>
 
-          <div style="text-align:center"><button id = "start" onclick="start()" class="start">타이머 시작</button></div>
+          <div style="text-align:center"><input type="button" id = "start" onclick="start()" class="start" value="타이머 시작"></button></div>
           
           <script>
           var i = '<%= time.time %>';
           var k = 500/(i/100)
+          var stopTimer = false
+          var id = 0
+          var width = 500
 
           function start() {
-            if (i == i)
-            {
-                var count = document.getElementById("countdown");
-                var start = document.getElementById("start");
-                start.disabled = true;
-                var countdown = i/100;
-                var digit = document.getElementById("digit");         
-                var elem = document.getElementById("myBar");
-                var width = 500;
-                var id = setInterval(frame,1000);
-                function frame() {
-                    if (width <= 1) {
-                        clearInterval(id);
-                        document.location.href='/timeout';    
-                    }
-                     else {
-                        count.innerHTML = --countdown;
-                        width-= k;
-                        elem.style.width = width + "px";
-                      }
-                  }
+
+            var start = document.getElementById("start");
+            var countdown = i/100;
+            if(stopTimer){
+              stopTimer = false
+              start.value="계속하기"
+              clearInterval(id)
+
+            } else {
+              stopTimer = true;
+              start.value="일시정지"
+              id = setInterval(frame,1000);
+            }
+            function frame() {
+              if (width <= 1) {
+                  clearInterval(id);
+                  document.location.href='/timeout';    
+              } else {
+                  var count = document.getElementById("countdown");
+                  var digit = document.getElementById("digit");         
+                  var elem = document.getElementById("myBar");
+                  count.innerHTML = --countdown;
+                  i = countdown*100
+                  width -= k;
+                  elem.style.width = width + "px";
               }
+            }
           }
           </script>
           

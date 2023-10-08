@@ -34,36 +34,18 @@
 
   
     <p class="title">생성할 팀 이름을 입력하세요(2글자~8글자)</p>
-
-    <form action="/teamCreate" method="post">
     <div class="create">
-      <input type="text" name="name" class="team_Name"></input>
-      <button class="team_Button">생성</button>     
+      <input type="text" name="name" id = "name" class="team_Name"></input>
+      <button class="team_Button" onclick="createTeam()">생성</button>     
     </div> 
-    </form> 
     
 
 
-    <form action="/teamdel" method="post">
       <div class="list">
         <div class="list_Title"><팀 리스트></div>
-        <ol class="list_team">
-          <% var name = data %>
-          <% if(name.name == '생성된팀이없습니다'){%>
-            <div class="list_group">
-              생성된 팀이 없습니다.
-            </div>
-          <%} else {%>
-            <% for(var i = 0; i < name.length; i++){%>
-              <div class="list_group">
-                <li><%= name[i].name %></li>
-                <button class="delete_Button" name="name" value="<%= name[i].name %>">X</button>
-              </div>
-            <%}%>
-          <%}%>     
+        <ol class="list_team" id = "teamList">
         </ol>
       </div>
-    </form>
     
 
     <div>
@@ -75,7 +57,7 @@
             <span class="popup_text">팀 리스트를 초기화하시겠습니까?</span><br><br>
 
               <div class="container_button">
-                <a href="/teamAlldel"><button class="ok">네</button></a>
+                <button onclick="allDel()"class="ok">네</button>
                 <button class="no">아니요</button>
               </div>
 
@@ -86,7 +68,110 @@
       </div>
       
     </div>
-    <button type = "button" onclick='location.href="/teamRank"' class="team_Rank">랭킹</button>
+    <button type = "button" onclick='teamRank()' class="team_Rank">랭킹</button>
+
+    <script>
+      function teamRank(){
+        let team = sessionStorage.getItem("team")
+        if(team){document.location="/teamRank"}
+        else{document.location="/teamNone"}
+      }
+
+      function createTeam(){
+        let team = document.getElementById("name").value
+        let checkTeam = sessionStorage.getItem(team)
+        let count = 0
+        if(sessionStorage.getItem("team")){
+          count = JSON.parse(sessionStorage.getItem("team")) 
+        }else{
+          count = 0
+        }
+
+        if(count.length >= 10){
+          alert("생성할 수 있는 팀의 수를 초과했습니다.");
+          location.reload()
+        }
+        else if(team.length<2 || team.length>8){
+          alert("2글자~8글자로 입력해 주세요.");
+          location.reload()
+        }
+        else if(checkTeam){
+          alert("동일한 팀명이 있습니다.");
+          location.reload()
+        } else{
+          sessionStorage.setItem(team,JSON.stringify({mind:0, body:0, actiongame:0, draw:0, flag:0, fourword:0, knowledge:0, nonsense:0, ox:0, total:0}))
+          
+          if(sessionStorage.getItem("team")){
+            let teams = JSON.parse(sessionStorage.getItem("team"))
+            teams.push(team)
+            sessionStorage.setItem("team",JSON.stringify(teams))
+            location.reload()
+          }
+          else{
+            team = [team]
+            sessionStorage.setItem("team",JSON.stringify(team))
+            location.reload()
+          }
+        }
+
+      }
+
+      window.onload=function(){  
+        if(sessionStorage.getItem("team")){
+          var ol = document.getElementById("teamList")
+          let teams = JSON.parse(sessionStorage.getItem("team"))
+          for(let i = 0; i<teams.length; i++){
+            var div = document.createElement("div")
+            div.className="list_group"
+
+            var li = document.createElement("li");
+            li.textContent = teams[i]
+
+            var del = document.createElement("button")
+            del.className="delete_Button"
+            del.innerText = "X"
+
+            ol.appendChild(div)
+            div.appendChild(li)
+            div.appendChild(del)
+
+            delTeam = teams[i]
+
+            del.addEventListener("click", function (){
+              let btn1 = event.target; // 어떤 버튼인지 찾아낸 후 
+              let li1 = btn1.parentNode;
+              let li1_ = li1.textContent
+              li1_ = li1_.slice(0,li1_.length-1)
+              sessionStorage.removeItem(li1_)
+
+              let delTeam = JSON.parse(sessionStorage.getItem("team"))
+              delTeam.splice(delTeam.indexOf(li1_),1)
+              sessionStorage.setItem("team",JSON.stringify(delTeam))
+              teamLength = sessionStorage.getItem("team")
+              if(sessionStorage.getItem("team").length <= 2){
+                sessionStorage.clear()
+              }
+              location.reload()
+
+
+            })
+
+          }
+        }
+        else{
+          let noTeam = document.createElement("div")
+          noTeam.className="list_group"
+          noTeam.textContent="생성된 팀이 없습니다."
+
+          teamList.appendChild(noTeam)
+        }
+      }
+
+      function allDel(){
+        sessionStorage.clear()
+        location.reload()
+      }
+    </script>
   
   </body>
 </html>

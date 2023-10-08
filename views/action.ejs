@@ -30,17 +30,23 @@
     
     <article class="btn">
       <div>
-        <a href="/actionGame1" class="oneofactionbtn">일심동체</a>
+        <a href="/actionGame1" onclick="saveType('mind')"class="oneofactionbtn">일심동체</a>
       </div>
       <div>
-        <a href="/actionGame2" class="bodybtn">몸으로<br />말해요</a>
+        <a href="/actionGame2" onclick="saveType('body')" class="bodybtn">몸으로<br />말해요</a>
       </div>
       <div>
-        <a href="/teamSelect/actionGame" class="nonstopspeakbtn">줄줄이<br />말해요</a>
+        <a href="/teamSelect/actionGame" onclick="saveType('actiongame')" class="nonstopspeakbtn">줄줄이<br />말해요</a>
       </div>
       <div>
-        <a href="/actionGame3" class="nonstopwritebtn">이어<br />그리기</a>
+        <a href="/actionGame3" onclick="saveType('draw')" class="nonstopwritebtn">이어<br />그리기</a>
       </div>
     </article>>
+    <script>
+      function saveType(selectType){
+        let type = selectType
+        sessionStorage.setItem("type",type)
+      }
+    </script>
   </body>
 </html>

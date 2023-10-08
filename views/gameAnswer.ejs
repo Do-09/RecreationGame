@@ -31,29 +31,40 @@
 
         <% if(quiz.type == 'ox'){%>
             <p><%= quiz.explain %></p>
-            <a href="/countTeam"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
+            <img src="/public/img/right.png" onclick="countTeam()" alt="다음으로" class="right">
         <%}%>
 
         <% if(quiz.type == '네글자 이어말하기'){%>
             <p><%= quiz.explain %></p>
-            <a href="/countTeam"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
+            <img src="/public/img/right.png" onclick="countTeam()" alt="다음으로" class="right">
         <%}%>
 
         <% if(quiz.type == '넌센스'){%>
             <p><%= quiz.explain %></p>
-            <a href="/countTeam"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
+            <img src="/public/img/right.png" onclick="countTeam()" alt="다음으로" class="right">
         <%}%>
 
         <% if(quiz.type == '상식퀴즈'){%>
             <p><%= quiz.explain %></p>
-            <a href="/countTeam"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
+            <img src="/public/img/right.png" onclick="countTeam()" alt="다음으로" class="right">
         <%}%>
 
         <% if(quiz.type == '국기 맞히기'){%>
-            <a href="/countTeam"><img src="/public/img/right.png" alt="다음으로" class="right"></a>
+            <img src="/public/img/right.png" onclick="countTeam()" alt="다음으로" class="right">
         <%}%>
         
     </div>
+
+    <% var type = data1 %>
+    <script>
+        function countTeam(){
+            if(sessionStorage.getItem("team")){
+                document.location="/countTeam"
+            } else{
+                document.location.href="/quiz/<%=type.type%>"
+            }
+        }
+    </script>
 </body>
 </html>
 

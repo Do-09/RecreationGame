@@ -1,9 +1,10 @@
 let sql = require('mysql');
 
 let db = sql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'tn156bm48@',
+    host: 'softpbl.ctdz1ecezbrw.ap-northeast-2.rds.amazonaws.com',
+    user: 'recreation',
+    port: 3306,
+    password: 'tn156bm48',
     database: 'softpbl'
 })
 

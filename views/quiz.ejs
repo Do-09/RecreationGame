@@ -29,11 +29,18 @@
     </section>
 
     <article class="btn">
-      <div><a href="/gameTimerSetting/fourWord" class="fourquizbtn">네글자<br />이어말하기</a></div>
-      <div><a href="/gameTimerSetting/knowledge" class="commonsensebtn">상식</a></div>
-      <div><a href="/gameTimerSetting/ox" class="oxbtn">OX</a></div>
-      <div><a href="/gameTimerSetting/nonsense" class="nonesensebtn">넌센스</a></div>
-      <div><a href="/gameTimerSetting/flag" class="flagbtn">국기</a></div>
+      <div><a href="/gameTimerSetting/fourWord" onclick="saveType('fourword')" class="fourquizbtn">네글자<br />이어말하기</a></div>
+      <div><a href="/gameTimerSetting/knowledge" onclick="saveType('knowledge')" class="commonsensebtn">상식</a></div>
+      <div><a href="/gameTimerSetting/ox" onclick="saveType('ox')" class="oxbtn">OX</a></div>
+      <div><a href="/gameTimerSetting/nonsense" onclick="saveType('nonsense')" class="nonesensebtn">넌센스</a></div>
+      <div><a href="/gameTimerSetting/flag" onclick="saveType('flag')" class="flagbtn">국기</a></div>
     </article>
+
+    <script>
+      function saveType(selectType){
+        let type = selectType
+        sessionStorage.setItem("type",type)
+      }
+    </script>
   </body>
 </html>

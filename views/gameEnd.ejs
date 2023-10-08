@@ -12,9 +12,9 @@
 
 </head>
 <body>
-    <div class="wrap">
+    <div class="wrap" id ="wrap">
         <div class="title">
-            <% var quiz = data[0] %>
+            <% var quiz = data %>
             <% if(quiz.type == "ox"){%>ox<%}%>
             <% if(quiz.type == "fourWord"){%>네글자 이어말하기<%}%>
             <% if(quiz.type == "knowledge"){%>상식퀴즈<%}%>
@@ -135,276 +135,161 @@
 
         <br><br><br>
           
-        <% var name = rank %>
-        <% if(name.name != "생성된팀이없습니다"){%>
-          
-          <div class="rank_title">
-              <img src="/public/img/rank.png" alt="랭킹" class="rank_image">
-              랭킹
-          </div>
-      
-          <div class="container_rank">
-
-              <div class="rank">
-                  <div class="text1">순위</div>
-                  <div class="text2">팀명</div>
-                  <div class="text3">점수</div>
-              </div>
-
-              <% if(action != 'else'){%>
-                <% var actionGame = action %>
-                <% var i = 1 %>
-                <div class="rank">
-                  <div class="circle" style="background-color: gold;">1</div>
-                  <div class="first_team">
-                  <%= name[0].name %>
-                  </div>
-                  <div class="Score">
-                    <% if(actionGame[0].type == "mind"){%> <%= name[0].mind %> <%}%>
-                    <% if(actionGame[0].type == "body"){%> <%= name[0].body %> <%}%>
-                    <% if(actionGame[0].type == "draw"){%> <%= name[0].draw %> <%}%>       
-                  </div>
-                </div>
-                <hr class="line_Rank">
-  
-                <% while(i<name.length) { %>
-                  <% if((actionGame[0].type == "mind" && name[i].mind == name[i-1].mind)||
-                  (actionGame[0].type == "body" && name[i].body == name[i-1].body)||
-                  (actionGame[0].type == "draw" && name[i].draw == name[i-1].draw)){ %>
-                    <div class="rank">
-                      <div class="circle" style="background-color: gold;">1</div>
-                      <div class="first_team"><%= name[i].name %></div>
-                      <div class="Score">
-                        <% if(actionGame[0].type == "mind"){%> <%= name[i].mind %> <%}%>
-                        <% if(actionGame[0].type == "body"){%> <%= name[i].body %> <%}%>
-                        <% if(actionGame[0].type == "draw"){%> <%= name[i].draw %> <%}%>       
-                      </div>
-                    </div>
-                    <hr class="line_Rank">
-                    <%i += 1%>
-                  <%}else{break;%>      
-                  <%}%>
-                <%}%>
-                <%if(i < name.length && i < 2){%>
-                  <div class="rank">
-                    <div class="circle" style="background-color: silver;">2</div>
-                    <div class="first_team"><%= name[i].name %></div>
-                    <div class="Score">
-                      <% if(actionGame[0].type == "mind"){%> <%= name[i].mind %> <%}%>
-                      <% if(actionGame[0].type == "body"){%> <%= name[i].body %> <%}%>
-                      <% if(actionGame[0].type == "draw"){%> <%= name[i].draw %> <%}%>       
-                    </div>
-                  </div>
-                  <hr class="line_Rank">
-                  <%i += 1%>
-                  <% while(i<name.length) { %>
-                    <% if((actionGame[0].type == "mind" && name[i].mind == name[i-1].mind)||
-                    (actionGame[0].type == "body" && name[i].body == name[i-1].body)||
-                    (actionGame[0].type == "draw" && name[i].draw == name[i-1].draw)){ %>
-                      <div class="rank">
-                        <div class="circle" style="background-color: silver;">2</div>
-                        <div class="first_team"><%= name[i].name %></div>
-                        <div class="Score">
-                          <% if(actionGame[0].type == "mind"){%> <%= name[i].mind %> <%}%>
-                          <% if(actionGame[0].type == "body"){%> <%= name[i].body %> <%}%>
-                          <% if(actionGame[0].type == "draw"){%> <%= name[i].draw %> <%}%>       
-                        </div>
-                      </div>
-                      <hr class="line_Rank">
-                      <%i += 1%>
-                    <%}else{break;%>      
-                    <%}%>
-                  <%}%>
-                <%}%>
         
-                <%if(i < name.length && i < 3){%>
-                  <div class="rank">
-                    <div class="circle" style="background-color: #DE844F;">3</div>
-                    <div class="first_team"><%= name[i].name %></div>
-                    <div class="Score">
-                      <% if(actionGame[0].type == "mind"){%> <%= name[i].mind %> <%}%>
-                      <% if(actionGame[0].type == "body"){%> <%= name[i].body %> <%}%>
-                      <% if(actionGame[0].type == "draw"){%> <%= name[i].draw %> <%}%>      
-                    </div>
-                  </div>
-                  <hr class="line_Rank">
-                  <%i += 1%>
-                  <% while(i<name.length) { %>
-                    <% if((actionGame[0].type == "mind" && name[i].mind == name[i-1].mind)||
-                    (actionGame[0].type == "body" && name[i].body == name[i-1].body)||
-                    (actionGame[0].type == "draw" && name[i].draw == name[i-1].draw)){ %>
-                      <div class="rank">
-                      <div class="circle" style="background-color: #DE844F;">3</div>
-                        <div class="first_team"><%= name[i].name %></div>
-                        <div class="Score">
-                          <% if(actionGame[0].type == "mind"){%> <%= name[i].mind %> <%}%>
-                          <% if(actionGame[0].type == "body"){%> <%= name[i].body %> <%}%>
-                          <% if(actionGame[0].type == "draw"){%> <%= name[i].draw %> <%}%>     
-                        </div>
-                      </div>
-                      <hr class="line_Rank">
-                      <%i += 1%>
-                    <%}else{break;%>      
-                    <%}%>
-                  <%}%>
-                <%}%>
-        
-                <% while(i<name.length) { %>
-                  <div class="rank">
-                    <div class="circle" style="background-color: #F6F6F6;"><%=i+1%></div>
-                    <div class="first_team"><%= name[i].name %></div>
-                    <div class="Score">
-                      <% if(actionGame[0].type == "mind"){%> <%= name[i].mind %> <%}%>
-                      <% if(actionGame[0].type == "body"){%> <%= name[i].body %> <%}%>
-                      <% if(actionGame[0].type == "draw"){%> <%= name[i].draw %> <%}%>    
-                    </div>
-                  </div>
-                  <hr class="line_Rank">
-                  <%i += 1%>
-                <%}%>
-
-
-              <% } else { %> 
-
-
-                <% var i = 1 %>
-                <div class="rank">
-                  <div class="circle" style="background-color: gold;">1</div>
-                  <div class="first_team">
-                  <%= name[0].name %>
-                  </div>
-                  <div class="Score">
-                    <% if(quiz.type == "ox"){%> <%= name[0].ox %> <%}%>
-                    <% if(quiz.type == "fourWord"){%> <%= name[0].fourword %> <%}%>
-                    <% if(quiz.type == "nonsense"){%> <%= name[0].nonsense %> <%}%>
-                    <% if(quiz.type == "knowledge"){%> <%= name[0].knowledge %> <%}%>
-                    <% if(quiz.type == "flag"){%> <%= name[0].flag %> <%}%>
-                    <% if(quiz.type == "actionGame"){%> <%= name[0].actiongame %> <%}%>       
-                  </div>
-                </div>
-                <hr class="line_Rank">
-  
-                <% while(i<name.length) { %>
-                  <% if((quiz.type == "fourWord" && name[i].fourword == name[i-1].fourword) || (quiz.type == "ox" && name[i].ox == name[i-1].ox) 
-                  || (quiz.type == "nonsense" && name[i].nonsense == name[i-1].nonsense) || (quiz.type == "knowledge" && name[i].knowledge == name[i-1].knowledge) 
-                  || (quiz.type == "flag" && name[i].flag == name[i-1].flag)|| (quiz.type == "actionGame" && name[i].actiongame == name[i-1].actiongame)){ %>
-                    <div class="rank">
-                      <div class="circle" style="background-color: gold;">1</div>
-                      <div class="first_team"><%= name[i].name %></div>
-                      <div class="Score">
-                        <% if(quiz.type == "ox"){%> <%= name[i].ox %> <%}%>
-                        <% if(quiz.type == "fourWord"){%> <%= name[i].fourword %> <%}%>
-                        <% if(quiz.type == "nonsense"){%> <%= name[i].nonsense %> <%}%>
-                        <% if(quiz.type == "knowledge"){%> <%= name[i].knowledge %> <%}%>
-                        <% if(quiz.type == "flag"){%> <%= name[i].flag %> <%}%>
-                        <% if(quiz.type == "actionGame"){%> <%= name[i].actiongame %> <%}%>    
-                      </div>
-                    </div>
-                    <hr class="line_Rank">
-                    <%i += 1%>
-                  <%}else{break;%>      
-                  <%}%>
-                <%}%>
-                <%if(i < name.length && i < 2){%>
-                  <div class="rank">
-                    <div class="circle" style="background-color: silver;">2</div>
-                    <div class="first_team"><%= name[i].name %></div>
-                    <div class="Score">
-                      <% if(quiz.type == "ox"){%> <%= name[i].ox %> <%}%>
-                      <% if(quiz.type == "fourWord"){%> <%= name[i].fourword %> <%}%>
-                      <% if(quiz.type == "nonsense"){%> <%= name[i].nonsense %> <%}%>
-                      <% if(quiz.type == "knowledge"){%> <%= name[i].knowledge %> <%}%>
-                      <% if(quiz.type == "flag"){%> <%= name[i].flag %> <%}%>
-                      <% if(quiz.type == "actionGame"){%> <%= name[i].actiongame %> <%}%>    
-                    </div>
-                  </div>
-                  <hr class="line_Rank">
-                  <%i += 1%>
-                  <% while(i<name.length) { %>
-                    <% if((quiz.type == "fourWord" && name[i].fourword == name[i-1].fourword) || (quiz.type == "ox" && name[i].ox == name[i-1].ox) 
-                    || (quiz.type == "nonsense" && name[i].nonsense == name[i-1].nonsense) || (quiz.type == "knowledge" && name[i].knowledge == name[i-1].knowledge) 
-                    || (quiz.type == "flag" && name[i].flag == name[i-1].flag)|| (quiz.type == "actionGame" && name[i].actiongame == name[i-1].actiongame)){ %>
-                      <div class="rank">
-                        <div class="circle" style="background-color: silver;">2</div>
-                        <div class="first_team"><%= name[i].name %></div>
-                        <div class="Score">
-                          <% if(quiz.type == "ox"){%> <%= name[i].ox %> <%}%>
-                          <% if(quiz.type == "fourWord"){%> <%= name[i].fourword %> <%}%>
-                          <% if(quiz.type == "nonsense"){%> <%= name[i].nonsense %> <%}%>
-                          <% if(quiz.type == "knowledge"){%> <%= name[i].knowledge %> <%}%>
-                          <% if(quiz.type == "flag"){%> <%= name[i].flag %> <%}%>
-                          <% if(quiz.type == "actionGame"){%> <%= name[i].actiongame %> <%}%>    
-                        </div>
-                      </div>
-                      <hr class="line_Rank">
-                      <%i += 1%>
-                    <%}else{break;%>      
-                    <%}%>
-                  <%}%>
-                <%}%>
-        
-                <%if(i < name.length && i < 3){%>
-                  <div class="rank">
-                    <div class="circle" style="background-color: #DE844F;">3</div>
-                    <div class="first_team"><%= name[i].name %></div>
-                    <div class="Score">
-                      <% if(quiz.type == "ox"){%> <%= name[i].ox %> <%}%>
-                      <% if(quiz.type == "fourWord"){%> <%= name[i].fourword %> <%}%>
-                      <% if(quiz.type == "nonsense"){%> <%= name[i].nonsense %> <%}%>
-                      <% if(quiz.type == "knowledge"){%> <%= name[i].knowledge %> <%}%>
-                      <% if(quiz.type == "flag"){%> <%= name[i].flag %> <%}%>
-                      <% if(quiz.type == "actionGame"){%> <%= name[i].actiongame %> <%}%>    
-                    </div>
-                  </div>
-                  <hr class="line_Rank">
-                  <%i += 1%>
-                  <% while(i<name.length) { %>
-                    <% if((quiz.type == "fourWord" && name[i].fourword == name[i-1].fourword) || (quiz.type == "ox" && name[i].ox == name[i-1].ox) 
-                    || (quiz.type == "nonsense" && name[i].nonsense == name[i-1].nonsense) || (quiz.type == "knowledge" && name[i].knowledge == name[i-1].knowledge) 
-                    || (quiz.type == "flag" && name[i].flag == name[i-1].flag)|| (quiz.type == "actionGame" && name[i].actiongame == name[i-1].actiongame)){ %>
-                      <div class="rank">
-                      <div class="circle" style="background-color: #DE844F;">3</div>
-                        <div class="first_team"><%= name[i].name %></div>
-                        <div class="Score">
-                          <% if(quiz.type == "ox"){%> <%= name[i].ox %> <%}%>
-                          <% if(quiz.type == "fourWord"){%> <%= name[i].fourword %> <%}%>
-                          <% if(quiz.type == "nonsense"){%> <%= name[i].nonsense %> <%}%>
-                          <% if(quiz.type == "knowledge"){%> <%= name[i].knowledge %> <%}%>
-                          <% if(quiz.type == "flag"){%> <%= name[i].flag %> <%}%>
-                          <% if(quiz.type == "actionGame"){%> <%= name[i].actiongame %> <%}%>    
-                        </div>
-                      </div>
-                      <hr class="line_Rank">
-                      <%i += 1%>
-                    <%}else{break;%>      
-                    <%}%>
-                  <%}%>
-                <%}%>
-        
-                <% while(i<name.length) { %>
-                  <div class="rank">
-                    <div class="circle" style="background-color: #F6F6F6;"><%=i+1%></div>
-                    <div class="first_team"><%= name[i].name %></div>
-                    <div class="Score">
-                      <% if(quiz.type == "ox"){%> <%= name[i].ox %> <%}%>
-                      <% if(quiz.type == "fourWord"){%> <%= name[i].fourword %> <%}%>
-                      <% if(quiz.type == "nonsense"){%> <%= name[i].nonsense %> <%}%>
-                      <% if(quiz.type == "knowledge"){%> <%= name[i].knowledge %> <%}%>
-                      <% if(quiz.type == "flag"){%> <%= name[i].flag %> <%}%>   
-                      <% if(quiz.type == "actionGame"){%> <%= name[i].actiongame %> <%}%>
-                    </div>
-                  </div>
-                  <hr class="line_Rank">
-                  <%i += 1%>
-                <%}%>
-
-              <%}%>
-              
-          </div>
-        <% } %>
 
     </div>
+    <script>
+      window.onload=function(){
+        let wrap = document.getElementById("wrap")
+        if(sessionStorage.getItem("team")){
+          let rankDiv = document.createElement("div")
+          rankDiv.className="rank_title"
+          rankDiv.textContent="랭킹"
 
+          let img = document.createElement("img")
+          img.src="/public/img/rank.png"
+          img.className="rank_image"
+
+          let rankCon = document.createElement("div")
+          rankCon.className="container_rank"
+
+          let rank = document.createElement("div")
+          rank.className="rank"
+
+          let text1 = document.createElement("div")
+          text1.className="text1"
+          text1.textContent="순위"
+
+          let text2 = document.createElement("div")
+          text2.className="text2"
+          text2.textContent="팀명"
+
+          let text3 = document.createElement("div")
+          text3.className="text3"
+          text3.textContent="점수"
+
+          wrap.appendChild(rankDiv)
+          rankDiv.append(img)
+          wrap.appendChild(rankCon)
+          rankCon.appendChild(rank)
+          rank.appendChild(text1)
+          rank.appendChild(text2)
+          rank.appendChild(text3)
+
+          let teams = JSON.parse(sessionStorage.getItem("team"))
+        
+          let type = sessionStorage.getItem("type")
+
+          var score = []
+          for(let i = 0; i<teams.length; i++){
+            let checkTeam = JSON.parse(sessionStorage.getItem(teams[i]))
+            if(type == 'mind'){
+              score.push(parseInt(checkTeam.mind))
+            } else if(type == 'body'){
+              score.push(parseInt(checkTeam.body))
+            } else if(type == 'actiongame'){
+              score.push(parseInt(checkTeam.actiongame))
+            } else if(type == 'draw'){
+              score.push(parseInt(checkTeam.draw))
+            } else if(type == 'fourword'){
+              score.push(parseInt(checkTeam.fourword))
+            } else if(type == 'knowledge'){
+              score.push(parseInt(checkTeam.knowledge))
+            } else if(type == 'ox'){
+              score.push(parseInt(checkTeam.ox))
+            } else if(type == 'nonsense'){
+              score.push(parseInt(checkTeam.nonsense))
+            } else if(type == 'flag'){
+              score.push(parseInt(checkTeam.flag))
+            }
+
+          }
+
+          score.sort(function(a,b){return a-b})
+          score.reverse()
+          var teamList = []
+          maxScore = score[0]
+          color = 0
+
+          for(let j = 0; j<score.length; j++){
+            for(let i = 0; i<teams.length; i++){
+            let totalTeam = JSON.parse(sessionStorage.getItem(teams[i]))
+            if(teamList.includes(teams[i])){
+              continue
+            }
+
+            let team_ = 0
+
+            if(type == 'mind'){
+              team_ = totalTeam.mind
+            } else if(type == 'body'){
+              team_ = totalTeam.body
+            } else if(type == 'actiongame'){
+              team_ = totalTeam.actiongame
+            } else if(type == 'draw'){
+              team_ = totalTeam.draw
+            } else if(type == 'fourword'){
+              team_ = totalTeam.fourword
+            } else if(type == 'knowledge'){
+              team_ = totalTeam.knowledge
+            } else if(type == 'ox'){
+              team_ = totalTeam.ox
+            } else if(type == 'nonsense'){
+              team_ = totalTeam.nonsense
+            } else if(type == 'flag'){
+              team_ = totalTeam.flag
+            }
+
+            if(score[j]==team_){
+              var teamDiv = document.createElement("div")
+              teamDiv.className = "rank"
+
+              var teamCircle = document.createElement("div")
+              teamCircle.className = "circle"
+              if(score[j]!=maxScore){color += 1; maxScore = score[j]}
+              if(color==0){
+                teamCircle.style.backgroundColor="gold"
+              }else if(color==1){
+                teamCircle.style.backgroundColor="silver"
+              } else if(color==2){
+                teamCircle.style.backgroundColor="#DE844F"
+              }else{
+                teamCircle.style.backgroundColor="#F6F6F6"
+              }
+              teamCircle.textContent = color+1
+
+              var teamName = document.createElement("div")
+              teamName.className = "first_team"
+              teamName.textContent = teams[i]
+
+              var teamScore = document.createElement("div")
+              teamScore.className = "Score"
+              teamScore.textContent = team_
+
+              var hr = document.createElement("hr")
+              hr.className="line_Rank"
+
+              rankCon.appendChild(teamDiv)
+              teamDiv.appendChild(teamCircle)
+              teamDiv.appendChild(teamName)
+              teamDiv.appendChild(teamScore)
+              rankCon.appendChild(hr)
+
+              teamList.push(teams[i])
+              break
+            }
+            else{
+              continue
+            }
+          }
+        }
+
+      }
+
+    }
+
+
+    </script>
 
 </body>
 </html>

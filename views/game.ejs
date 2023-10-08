@@ -91,145 +91,146 @@
                 <%}%>
 
                 <% if(quiz.type == "영화"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/movie" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
         
                 <% if(quiz.type == "드라마"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/drama" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
         
                 <% if(quiz.type == "댄스곡"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/dance" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
         
                 <% if(quiz.type == "음식"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/food" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
 
                 <% if(quiz.type == "기념일"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/anniversary" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
 
                 <% if(quiz.type == "취미"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/hobby" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
         
                 <% if(quiz.type == "직업"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/job" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
         
                 <% if(quiz.type == "스포츠"){%>
-                    <form action="/gameScore" method="post">
+                    <form accept="/quiz/sports" method="get">
                         <div class="count">
-                            <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                                <button class="false" name="score" value="실패" class="false_text" onclick="document.location='/quiz/sports'">틀림</button>
+                                <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
         
                 <% if(quiz.type == "동물"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/animal" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
 
                 <% if(quiz.type == "감정"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/emotion" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
 
                         
                 <% if(quiz.type == "악기"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/instrument" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
         
                 <% if(quiz.type == "속담"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/proverb" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
         
                 <% if(quiz.type == "인물"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/person" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
 
                 <% if(quiz.type == "물건"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/object" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">틀림</button>
-                            <button class="true" name="score" value="성공" class="true_text">맞힘</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">맞힘</button>
                         </div>
                     </form>
                 <%}%>
 
                 <% if(quiz.type == "줄줄이 말해요"){%>
-                    <form action="/gameScore" method="post">
+                    <form action="/quiz/actionGame" method="get">
                         <div class="count">
                             <button class="false" name="score" value="실패" class="false_text">실패</button>
-                            <button class="true" name="score" value="성공" class="true_text">성공</button>
+                            <button class="true" name="score" value="성공" class="true_text" onclick="correct()">성공</button>
                         </div>
                     </form>
                 <%}%>
 
 
-                <% var getTime = data1[0] %>
+                <% var getTime = data1 %>
+                <% var selectTeam = data2 %>
                 <script>
-            
+                    
                     var i = '<%= getTime.time %>';
                     var k = 300/(i/100)
                       window.onload=function() {
@@ -249,6 +250,70 @@
                                   }
                               }
                           }
+                      }
+
+
+                      function correct(){
+                        var selectTeam = '<%= selectTeam.selectTeam %>';
+                        var gameType = sessionStorage.getItem("type")
+                        selectTeam = Array(selectTeam.split(','))
+                        for(let i = 0; i<selectTeam[0].length; i++){
+                            let team = selectTeam[0][i]
+                            let teamList = JSON.parse(sessionStorage.getItem("team"))
+                            if(teamList.includes(team)){
+                                let teamData= JSON.parse(sessionStorage.getItem(team))
+                                if(gameType == 'mind'){
+                                let fourword = teamData.fourword
+                                let total = teamData.total + 1
+                                let mind = teamData.mind + 1
+                                let body = teamData.body
+                                let actiongame = teamData.actiongame
+                                let draw = teamData.draw
+                                let flag = teamData.flag
+                                let knowledge = teamData.knowledge
+                                let nonsense = teamData.nonsense
+                                let ox = teamData.ox
+                                sessionStorage.setItem(team,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))}
+                                else if(gameType=='body'){
+                                let fourword = teamData.fourword
+                                let total = teamData.total + 1
+                                let mind = teamData.mind
+                                let body = teamData.body + 1
+                                let actiongame = teamData.actiongame
+                                let draw = teamData.draw
+                                let flag = teamData.flag
+                                let knowledge = teamData.knowledge
+                                let nonsense = teamData.nonsense
+                                let ox = teamData.ox
+                                sessionStorage.setItem(team,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))}
+                                else if(gameType=='actiongame'){
+                                let fourword = teamData.fourword
+                                let total = teamData.total + 1
+                                let mind = teamData.mind 
+                                let body = teamData.body
+                                let actiongame = teamData.actiongame + 1
+                                let draw = teamData.draw
+                                let flag = teamData.flag
+                                let knowledge = teamData.knowledge
+                                let nonsense = teamData.nonsense
+                                let ox = teamData.ox
+                                sessionStorage.setItem(team,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))}
+                                else if(gameType=='draw'){
+                                let fourword = teamData.fourword
+                                let total = teamData.total + 1
+                                let mind = teamData.mind 
+                                let body = teamData.body
+                                let actiongame = teamData.actiongame
+                                let draw = teamData.draw + 1
+                                let flag = teamData.flag
+                                let knowledge = teamData.knowledge
+                                let nonsense = teamData.nonsense
+                                let ox = teamData.ox
+                                sessionStorage.setItem(team,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))}
+                            }    
+
+                        }
+                        
                       }
                     </script>
         

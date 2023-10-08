@@ -35,22 +35,203 @@
     <p class="title">정답을 맞힌 팀을 선택하세요</p>
     
     <form action="/correct" method="post">
-    <div class="container">
-      <% var name = data %>
-      <% for(var i = 0; i < name.length; i++){%>
-          <div class="set">
-              <div class="team_Name">
-                  <%= name[i].name %>
-              </div>
-              <input type="checkbox" name = "name" value="<%= name[i].name %>" class="check"></input><br/>
-          </div>
-      <%}%>
+      <div class="container" id ="teamList" >
+        </div>  
 
-    </div>  
- 
-    <div class="team_Service">
-      <input type="image" src="/public/img/right.png" alt="다음으로" class="right">
-    </div>
+        <div class="team_Service">
+            <input type="image" src="/public/img/right.png" alt="다음으로" class="right">
+        </div>
   </form>
+  <%type = data%>
+
+  <script>
+    
+    window.onload=function(){
+      if(sessionStorage.getItem("team")){
+        let teamList = document.getElementById("teamList")
+        let teams = JSON.parse(sessionStorage.getItem("team"))
+
+        for(let i = 0; i<teams.length; i++){
+          var teamDiv = document.createElement("div")
+          teamDiv.className = "set"
+
+          var teamName = document.createElement("div")
+          teamName.className = "team_Name"
+          teamName.textContent = teams[i]
+
+          var teamCheck = document.createElement("input")
+          teamCheck.type = "checkbox"
+          teamCheck.className = "check"
+          teamCheck.name = "team"
+          teamCheck.value = teams[i]
+
+          teamList.appendChild(teamDiv)
+          teamDiv.appendChild(teamName)
+          teamDiv.appendChild(teamCheck)
+
+          let check = 1
+          teamCheck.addEventListener("click", function (){
+
+            let box = event.target; 
+            box = box.value
+
+            let teamData= JSON.parse(sessionStorage.getItem(box))
+            let type = sessionStorage.getItem("type")
+
+            if (type == 'fourword' && check){
+              check = 0
+              let fourword = teamData.fourword + 1
+              let total = teamData.total + 1
+              let mind = teamData.mind
+              let body = teamData.body
+              let actiongame = teamData.actiongame
+              let draw = teamData.draw
+              let flag = teamData.flag
+              let knowledge = teamData.knowledge
+              let nonsense = teamData.nonsense
+              let ox = teamData.ox
+              sessionStorage.setItem(box,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))
+
+            } else if(type == 'fourword' && !(check)){
+              check = 1
+              let fourword = teamData.fourword -1
+              let total = teamData.total -1
+              let mind = teamData.mind
+              let body = teamData.body
+              let actiongame = teamData.actiongame
+              let draw = teamData.draw
+              let flag = teamData.flag
+              let knowledge = teamData.knowledge
+              let nonsense = teamData.nonsense
+              let ox = teamData.ox
+              sessionStorage.setItem(box,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))
+            }
+
+            if (type == 'knowledge' && check){
+              check = 0
+              let fourword = teamData.fourword
+              let total = teamData.total + 1
+              let mind = teamData.mind
+              let body = teamData.body
+              let actiongame = teamData.actiongame
+              let draw = teamData.draw
+              let flag = teamData.flag
+              let knowledge = teamData.knowledge + 1
+              let nonsense = teamData.nonsense
+              let ox = teamData.ox
+              sessionStorage.setItem(box,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))
+
+            } else if(type == 'knowledge' && !(check)){
+              check = 1
+              let fourword = teamData.fourword
+              let total = teamData.total -1
+              let mind = teamData.mind
+              let body = teamData.body
+              let actiongame = teamData.actiongame
+              let draw = teamData.draw
+              let flag = teamData.flag
+              let knowledge = teamData.knowledge -1
+              let nonsense = teamData.nonsense
+              let ox = teamData.ox
+              sessionStorage.setItem(box,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))
+            }
+
+            if (type == 'flag' && check){
+              check = 0
+              let fourword = teamData.fourword
+              let total = teamData.total + 1
+              let mind = teamData.mind
+              let body = teamData.body
+              let actiongame = teamData.actiongame
+              let draw = teamData.draw
+              let flag = teamData.flag + 1
+              let knowledge = teamData.knowledge
+              let nonsense = teamData.nonsense
+              let ox = teamData.ox
+              sessionStorage.setItem(box,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))
+
+            } else if(type == 'flag' && !(check)){
+              check = 1
+              let fourword = teamData.fourword
+              let total = teamData.total -1
+              let mind = teamData.mind
+              let body = teamData.body
+              let actiongame = teamData.actiongame
+              let draw = teamData.draw
+              let flag = teamData.flag -1
+              let knowledge = teamData.knowledge
+              let nonsense = teamData.nonsense
+              let ox = teamData.ox
+              sessionStorage.setItem(box,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))
+            }
+
+            if (type == 'nonsense' && check){
+              check = 0
+              let fourword = teamData.fourword 
+              let total = teamData.total + 1
+              let mind = teamData.mind
+              let body = teamData.body
+              let actiongame = teamData.actiongame
+              let draw = teamData.draw
+              let flag = teamData.flag
+              let knowledge = teamData.knowledge
+              let nonsense = teamData.nonsense+ 1
+              let ox = teamData.ox
+              sessionStorage.setItem(box,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))
+
+            } else if(type == 'nonsense' && !(check)){
+              check = 1
+              let fourword = teamData.fourword 
+              let total = teamData.total -1
+              let mind = teamData.mind
+              let body = teamData.body
+              let actiongame = teamData.actiongame
+              let draw = teamData.draw
+              let flag = teamData.flag
+              let knowledge = teamData.knowledge
+              let nonsense = teamData.nonsense-1
+              let ox = teamData.ox
+              sessionStorage.setItem(box,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))
+            }
+
+            if (type == 'ox' && check){
+              check = 0
+              let fourword = teamData.fourword 
+              let total = teamData.total + 1
+              let mind = teamData.mind
+              let body = teamData.body
+              let actiongame = teamData.actiongame
+              let draw = teamData.draw
+              let flag = teamData.flag
+              let knowledge = teamData.knowledge
+              let nonsense = teamData.nonsense
+              let ox = teamData.ox+ 1
+              sessionStorage.setItem(box,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))
+
+            } else if(type == 'ox' && !(check)){
+              check = 1
+              let fourword = teamData.fourword
+              let total = teamData.total -1
+              let mind = teamData.mind
+              let body = teamData.body
+              let actiongame = teamData.actiongame
+              let draw = teamData.draw
+              let flag = teamData.flag
+              let knowledge = teamData.knowledge
+              let nonsense = teamData.nonsense
+              let ox = teamData.ox -1
+              sessionStorage.setItem(box,JSON.stringify({mind:mind, body:body, actiongame:actiongame, draw:draw, flag:flag, fourword:fourword, knowledge:knowledge, nonsense:nonsense, ox:ox, total:total}))
+            }
+
+
+
+
+          })
+        }
+      }
+    }
+
+
+  </script>
   </body>
 </html>
